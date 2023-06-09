@@ -1,0 +1,43 @@
+<div class="pricing__card"  data-aos="fade-down" data-aos-duration="1400" *ngIf="category$ | async as category">
+          <div class="pricing__top" *ngIf="imageLoading">
+        <p-skeleton styleClass="mb-1" height="13rem"></p-skeleton>
+
+          </div>
+        <div *ngIf="!imageLoading" class="pricing__top" [ngStyle]="{'background-image': 'url(' + course.courseCoverUrl + ')'}" (click)="openVideo()" >
+
+        </div>
+        <div class="pricing__bottom">
+            <div class="tag"  *ngIf="exists">
+              Already Enrolled
+            </div>
+            <h2 [class]="'head__three' + ' ' + category.selected">
+               {{category?.courseSelected?.pricePlan?.price == 0 ? 'Free' : category?.courseSelected?.pricePlan?.price  | currency: category?.courseSelected?.pricePlan?.currency :'symbol-narrow'}}
+            </h2>
+            <small>236 Students already enrolled</small>
+            <div class="btn__group">
+
+                <!-- <button pRipple class="secondary__btn full" >
+                    Go to cart
+                  </button> -->
+                  <button *ngIf="exists" pRipple [class]="'primary__btn' + ' ' + category.selected" (click)="proceed() ">
+                    Proceed to Course
+                  </button>
+                  <button *ngIf="!exists"  pRipple [class]="'primary__btn' + ' ' + category.selected" (click)="auth.isUserLoggedIn() ? addToCart() : login() "> <i class="pi pi-spin pi-spinner" *ngIf="loading"></i>
+                    {{auth.isUserLoggedIn() ? 'Add to cart': 'Enroll Now'}}
+                  </button>
+            </div>
+        </div>
+</div>
+
+<p-dialog
+[(visible)]="videoModal"
+[modal]="true"
+[draggable]="false"
+[resizable]="false"
+
+[style]="{ width: '70vw', height: '90vh' }"
+>
+<div class="modal__content">
+  <app-video-modal [open]="videoModal" [videoId$]="videoId$"></app-video-modal>
+</div>
+</p-dialog>

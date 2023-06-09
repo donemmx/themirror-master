@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="mylearning__top">
+  <div class="group__text">
+    <div data-aos="fade-down" data-aos-duration="1700" class="head__three">
+      Welcome Back!
+    </div>
+    <h1 data-aos="fade-down" data-aos-duration="800" class="head__one">
+      {{ message.user.name | titlecase }}
+    </h1>
+    <div class="text pt-3" data-aos="fade-in" data-aos-duration="1500">
+      <i class="pi pi-play"></i>
+      <p>Continue your Learning Path</p>
+    </div>
+  </div>
+  <div class="chart">
+    <div class="title">
+      My Journey to Wholeness
+    </div>
+      
+  </div>
+</div>
+<div class="myLearning__body">
+
+    <p-tabView>
+      <p-tabPanel header="Home">
+        <h3 class="head__three color__sec mt-3">My Paid Courses</h3>
+
+        <div class="tab__body mt-2">
+          <div class="courses" *ngFor="let courseId of myCourses$| async">
+            <app-learning-card [courseId]="courseId"></app-learning-card>
+          </div>
+        </div>
+        <app-recommended></app-recommended>
+      </p-tabPanel>
+      <p-tabPanel header="In Progress">
+
+        <!-- <div class="tab__body flex">
+          <div class="subheading">Are you sure you want to close your account?</div>
+          <p>
+            We're sorry to see you go! If you close your account, you'll lose access
+            to all your course progress and materials.
+          </p>
+          <p>
+            If you change your mind in the future, you'll need to create a new
+            account and start over.
+          </p>
+          <p>
+            If you have any feedback on how we can improve our platform, please let
+            us know.
+          </p>
+        </div> -->
+      </p-tabPanel>
+      <p-tabPanel header="Completed">
+        <div class="tab__body">
+          <!-- <app-recommended></app-recommended> -->
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+</div>
+<app-footer></app-footer>

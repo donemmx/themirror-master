@@ -1,0 +1,31 @@
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__container">
+      <div class="footer__left">
+        <h3 class="head__three">Want To Find Your Pathway To Wholeness?</h3>
+        <p class="paragraph">
+          Join now to enjoy customize Mentoring & Discipleship Program to
+          maximize your potential, fulfill God-given purpose, and enjoy healthy
+          relationships.
+        </p>
+        <button class="primary__btn" *ngIf="message.user?.name === null" routerLink="/signup">Signup</button>
+        <div class="footer__apps">
+          <img
+            src="../../../assets/hero/playstore.png"
+            alt=""
+            draggable="false"
+          />
+          <img
+            src="../../../assets/hero/appStore.png"
+            alt=""
+            draggable="false"
+          />
+        </div>
+      </div>
+      <div class="footer__right">
+        <img src="../../../assets/footer/pastor.png" alt="" />
+      </div>
+    </div>
+  </div>
+ <app-footer-bottom></app-footer-bottom>
+</footer>

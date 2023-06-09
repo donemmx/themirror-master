@@ -1,0 +1,55 @@
+<div class="stickyLogo">
+  <img src="../../../assets/logo/logo.png" alt="" routerLink="/home" />
+  <div class="home" routerLink="/home">
+    <i class="pi pi-home"></i>
+    Home
+  </div>
+</div>
+    <div class="signup__container">
+      <div class="signup__content">
+        <h3 class="head__three">Let’s Create an account</h3>
+        <form class="form" class="form" [formGroup]="signupForm">
+          <div class="form__group">
+            <label for=""> Full name *</label>
+            <input type="text" formControlName="name" id="" />
+          </div>
+          <div class="form__group">
+            <label for=""> Email * </label>
+            <input type="email" formControlName="email" name="" id="" />
+          </div>
+          <div class="form__group">
+            <label for=""> Date of Birth *</label>
+            <input type="date" formControlName="dateOfBirth" id="" />
+          </div>
+          <div class="form__group">
+            <label for=""> Gender *</label>
+            <p-dropdown [options]="gender" class="full"  formControlName="gender" placeholder="Select a Gender"></p-dropdown>
+          </div>
+          <div class="form__group">
+            <label for=""> Password *</label>
+            <input type="password" formControlName="password" id="" />
+          </div>
+          <small class="error" *ngIf="signupForm.controls['password'].errors">
+            Please enter password
+          </small>
+          <div class="form__group">
+            <label for=""> Confirm Password *</label>
+            <input type="password" formControlName="confirmPassword" id="" />
+          </div>
+          <small class="error" *ngIf="signupForm.controls['confirmPassword'].errors">
+            Please enter confirm password
+          </small>
+          <small class="error" *ngIf="!checkPassword()">Password don't match.</small>
+          <!-- <small
+            >By continuing, you agree to our Terms of Service and Privacy
+            Policy</small
+          > -->
+          <div class="bottom">
+            <button pRipple class="primary__btn next" (click)="next()" [disabled]="!signupForm.valid || loading">
+              <i *ngIf="loading" class="pi pi-spinner pi-spin"></i>
+              Next</button>
+            <div class="join" routerLink="/login">Already have an account? <span >Log in</span></div>
+          </div>
+        </form>
+      </div>
+    </div>

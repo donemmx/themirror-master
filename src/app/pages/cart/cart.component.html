@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="cart__main">
+    <div class="cart__body">
+        <h2 class="cart__title mb-2">My Cart</h2>
+        <div class="card__group" *ngIf="category$ | async as category">
+            <div class="fixed" >
+                <div class="cart__left" *ngFor="let course of category.cart; let i = index">
+                    <div class="course__img">
+                        <app-course-image [course]="course"></app-course-image>
+                        
+                    </div>
+                    <div class="course">
+                        <div class="grouped">
+                            <div class="courseTitle"> {{course.title}} </div>
+                            <small class="instructor">Instructor: {{course.instructor}}</small>
+                        </div>
+                    </div>
+                    <div class="price">
+                       {{course.pricePlan?.price | currency: '$'}} 
+                    </div>
+                    <div class="remove" (click)="deleteItem(i)"> 
+                        <i class="pi pi-trash"></i>
+                    </div>
+                </div>
+                <div class="total__price">
+                    <hr class="mb-2">
+                    <div class="price">
+                        <small>Total Price:</small>
+                        {{(totalprice$| async) | currency: '$'}}
+                    </div>
+                    <hr class="mt-2">
+
+                </div>
+            </div>
+            <div class="cart__right">
+                <app-payment-card [courses]="category.cart"></app-payment-card>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer-bottom></app-footer-bottom>

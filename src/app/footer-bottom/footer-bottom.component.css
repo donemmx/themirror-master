@@ -1,0 +1,30 @@
+
+.footer__bottom{
+    background: var(--blue);
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+    width: 100%;
+}
+
+.footer__body{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer__links{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer__links a, .footer__copyright {
+    color: var(--white);
+    font-size: 0.85rem;
+}

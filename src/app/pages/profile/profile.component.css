@@ -1,0 +1,141 @@
+.profile__main {
+  margin: 20vh 0 15vh 0;
+}
+
+.profile__body {
+  width: 80%;
+  margin: auto;
+  padding: 30px;
+}
+
+.profile__card {
+  border-radius: 10px;
+  box-shadow: var(--shadow-one);
+}
+h4{
+    color: var(--text);
+}
+
+.profile__top {
+  height: 25vh;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  justify-content: center;
+  border-radius: 10px 10px 0 0;
+  background-image: url(../../../assets/profile/profile-bg.png);
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.profile__heading {
+  color: var(--white);
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-variation-settings: "wght" 800;
+}
+
+.profile__subtitle {
+  color: var(--white);
+}
+
+.profile__cardBody {
+  padding: 50px;
+}
+
+.name {
+  padding: 15px;
+  height: 50px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: 1px solid rgb(224, 224, 224);
+  background: rgb(243, 243, 243);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 50px;
+}
+
+.photo__group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.photo__group img {
+  height: 70px;
+  width: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.preview{
+    display: grid;
+    font-size: 0.9rem;
+    font-variation-settings: 'wght' 800;
+    place-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--blue);
+}
+.preview img{
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;  
+  display: grid;
+}
+.remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  color: var(--text);
+}
+
+.remove:hover {
+  color: var(--primary-color);
+}
+
+.primary__btn {
+  width: 150px;
+}
+
+.privacy {
+  display: grid;
+  grid-gap: 30px;
+}
+
+hr {
+  height: 0.5px;
+  color: var(--white);
+  opacity: 0.2;
+}
+
+
+@media screen and (max-width: 580px) {
+  .profile__body {
+    width: 90%;
+    margin: auto;
+    padding: 0px;
+  }
+
+  .profile__top, .profile__cardBody{
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .profile__top{
+        border-radius: 5px 5px 0 0;
+  }
+
+  .form{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+}

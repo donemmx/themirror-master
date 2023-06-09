@@ -1,0 +1,22 @@
+<div [class]="bg ? 'section bg__course' : 'section'">
+  <section class="section__container">
+    <div class="section__header">
+      <h3 class="head__three color__sec">What To Learn Today?</h3>
+      <a routerLink="" class="small" routerLink="/courses">View All</a>
+    </div>
+    <div class="course__section" @listAnimation>
+      <div class="grouped__loading" *ngIf="loading" >
+        <div class="grouped" *ngFor="let data of [1,2,3,4]">
+          <p-skeleton styleClass="mb-1"></p-skeleton>
+          <p-skeleton width="10rem" styleClass="mb-1"></p-skeleton>
+          <p-skeleton width="5rem" styleClass="mb-1"></p-skeleton>
+          <p-skeleton height="2rem" styleClass="mb-1"></p-skeleton>
+        </div>
+      </div>
+        <div class="course__container" *ngFor="let course of (courses$ | async)">
+          <app-course-card [course]="course" *ngIf="!loading"></app-course-card>
+        </div>
+    </div>
+    <button pRipple class="primary__btn" routerLink="/courses">Load More</button>
+  </section>
+</div>

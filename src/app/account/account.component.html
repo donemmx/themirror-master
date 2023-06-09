@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div class="account__main">
+  <div class="account__body">
+    <div [class]="'heading__account' + ' ' + message.selected "   data-aos="fade-down" data-aos-duration="1400">Account settings</div>
+    <div class="tab mt-3" data-aos="fade-in" data-aos-duration="1200">
+      <p-tabView>
+        <p-tabPanel header="Account security">
+          <div class="tab__body">
+            <form class="form pt-3" class="form" [formGroup]="account">
+                <div class="form__group">
+                  <label for=""> Email </label>
+                   <div class="email"> {{message.user?.email}}</div>
+                </div>
+                <div class="form__group">
+                  <label for="">New Password</label>
+                  <input type="password" formControlName="password" id="" />
+                </div>
+                <div class="form__group">
+                  <label for="">Confirm Password</label>
+                  <input type="password" formControlName="confirmPassword" id="" />
+                </div>
+                <div class="bottom">
+                  <button
+                    pRipple
+                    class="primary__btn next"
+                    (click)="changePassword()"
+                    [disabled]="!account.valid || loading"
+                  >
+                    <i *ngIf="loading" class="pi pi-spinner pi-spin"></i>
+                    Change password
+                  </button>
+                </div>
+              </form>
+          </div>
+        </p-tabPanel>
+        <!-- <p-tabPanel header="Notification">
+          <div class="tab__body">
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+              eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci
+              velit, sed quia non numquam eius modi.
+            </p>
+          </div>
+        </p-tabPanel> -->
+        <p-tabPanel header="Close account">
+          <div class="tab__body flex">
+            <div class="subheading">
+              Are you sure you want to close your account?
+            </div>
+            <p>
+              We're sorry to see you go! If you close your account, you'll lose
+              access to all your course progress and materials.
+            </p>
+            <p>
+              If you change your mind in the future, you'll need to create a new
+              account and start over.
+            </p>
+            <p>
+              If you have any feedback on how we can improve our platform,
+              please let us know.
+            </p>
+            <div class="bottom">
+                <button
+                  pRipple
+                  class="primary__btn next"
+                  (click)="changePassword()"
+                  [disabled]="!account.valid"
+                >
+                  <i *ngIf="loading" class="pi pi-spinner pi-spin"></i>
+                  Delete Account
+                </button>
+              </div>
+          </div>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>
+<app-footer-bottom></app-footer-bottom>

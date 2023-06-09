@@ -1,0 +1,58 @@
+<div class="hero__main">
+  <div class="hero__container">
+    <div class="hero__left">
+      <h1
+        class="head__one center"
+        data-aos="fade-down"
+        data-aos-duration="1350"
+      >
+        The Pathway To <span> Wholeness</span>
+      </h1>
+      <p
+        data-aos="fade-down"
+        data-aos-duration="1000"
+        class="paragraph subtitle center w-60"
+      >
+        Customized Program to Promote Personal Development, Achieve Life
+        Purpose, Nurture Meaningful Social Connections, and Enhance Spiritual
+        Well-being.
+      </p>
+      <div class="hero__app">
+        <img
+          data-aos="fade-down"
+          data-aos-duration="1300"
+          src="../../../assets/hero/playstore.png"
+          alt=""
+          draggable="false"
+        />
+        <img
+          data-aos="fade-down"
+          data-aos-duration="1450"
+          src="../../../assets/hero/appStore.png"
+          alt=""
+          draggable="false"
+        />
+      </div>
+    </div>
+    <div class="hero__right" (click)="openVideo()">
+      <img src="../../../assets/hero/hero-img.png" alt="" />
+      <div class="hero__video center">
+        <i class="pi pi-play"></i>
+        <p>Watch how IESSP benefits you</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <p-dialog
+    [(visible)]="videoModal"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+
+    [style]="{ width: '70vw', height: '90vh' }"
+  >
+    <div class="modal__content">
+      <app-video-modal [open]="videoModal" [videoId$]="id$"></app-video-modal>
+    </div>
+  </p-dialog>

@@ -1,0 +1,55 @@
+.mylearning__top{
+    height: 100vh;
+    background-image: url(../../../assets/header/learning-bg.png);
+    background-size: cover;
+    position: relative;
+}
+
+.group__text{
+    position: absolute;
+    top: 20%;
+    left: 13%;
+}
+
+.head__three{
+    color: var(--white);
+}
+
+.head__one{
+    color: var(--secondary-color);
+}
+
+.text{
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+
+}
+
+.text i {
+    padding: 10px;
+    border: 1px solid var(--white);
+    border-radius: 50%;
+}
+
+.myLearning__body{
+    width: 80%;
+    margin: auto;
+}
+
+:host ::ng-deep .p-tabview-nav-container::before{
+    content: '';
+    width: 100vw;
+    height: 80px;
+    position: absolute;
+    left: -12%;
+    background: rgba(0, 0, 0, 0.064);
+}
+
+.tab__body{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}

@@ -1,0 +1,38 @@
+<div class="stickyLogo">
+  <img src="../../../assets/logo/logo.png" alt="" routerLink="/home" />
+  <div class="home" routerLink="/home">
+    <i class="pi pi-home"></i>
+    Home
+  </div>
+</div>
+    <div class="signup__container">
+   
+      <div class="signup__content">
+        <h3 class="head__three">OTP Validation</h3>
+      
+        <form class="form" class="form" [formGroup]="otpForm">
+        <p class="login__mobileTopContent">  Enter the code sent to your email. </p>
+
+          <div class="form__group">
+            <label for=""> OTP </label>
+            <input type="text" formControlName="otp" name="" id="" class="otp" />
+          </div>
+          <div class="bottom">
+            <button pRipple class="primary__btn next" [disabled]="!otpForm.valid || loading" (click)="verifyOtp()" >
+              <i *ngIf="loading" class="pi pi-spinner pi-spin"></i>
+              Verify</button>
+          </div>
+        </form>
+        <div class="clock">
+        <i class="pi pi-clock pi-spin"></i>
+           <p> {{timeLeft}}</p>
+        </div>
+      
+        <div class="loginForm__footer">
+          <div [class]="timerOn ? 'hidden' : 'loginForm__info mb-2'" >
+            <p>Haven't received the code?  <a class="cursor-pointer" (click)="resendOTP()">Re-Send Code</a></p>
+          </div>
+          <div class="join" routerLink="/signup">Don't have an account? <span>Sign up</span></div>
+        </div>
+      </div>
+    </div>

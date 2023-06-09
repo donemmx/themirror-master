@@ -1,0 +1,10 @@
+<app-header></app-header>
+<app-portfolio-hero></app-portfolio-hero>
+<div class="portfolio__main">
+    <div class="portfolio__body">
+        <div class="contents">
+            <app-portfolio-card *ngFor="let card of mycard" [card]="card"></app-portfolio-card>
+        </div>
+    </div>
+</div>
+<app-footer-bottom></app-footer-bottom>

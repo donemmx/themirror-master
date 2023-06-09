@@ -1,0 +1,18 @@
+<section class="hero__three">
+    <div class="hero__threeBody">
+        <div class="hero__threeTop">
+
+        </div>
+        <div class="hero__threeBottom">
+            <div class="bottom__container" *ngIf="category$ | async as category">
+                <h3 [class]="'head__three' + ' ' + category.selected">
+                    {{title}}
+                </h3>
+                <small>Instructor: {{instructor}}</small>
+                <p class="rating">
+                    4.0 ★★★★★ (1,250)
+                  </p>
+            </div>
+        </div>
+    </div>
+</section>

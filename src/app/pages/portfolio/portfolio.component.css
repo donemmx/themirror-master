@@ -1,0 +1,21 @@
+.portfolio__main{
+    width: 100%;
+
+}
+.portfolio__body{
+    width: 80%;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.contents{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 40px;
+}
+
+@media screen and (max-width: 580px) {
+    .portfolio__body{
+        width: 90%;
+    }
+}
