@@ -9,12 +9,10 @@ import { CoursesService } from '../api/services';
 })
 export class LearningCardComponent implements OnInit {
   @Input() courseId: any;
-  course$: Observable<any>
+  @Input() course: any
   constructor(private api: CoursesService){}
 
   ngOnInit(): void {
-    this.course$ = this.api.getCourse({
-      courseId: this.courseId
-    })
+  
   }
 }

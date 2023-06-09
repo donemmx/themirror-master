@@ -1,3 +1,4 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -65,7 +66,7 @@ cardForm: FormGroup;
           paystack.newTransaction({
             key: res.key,
             email: res.email,
-            amount: res.amount,
+            amount: res.amount/100,
             ref: res.reference,
             onSuccess: (transaction: any) => {
               console.log(transaction);
@@ -74,6 +75,8 @@ cardForm: FormGroup;
                 .subscribe(() => {
                  this.loading = false
                  this.success = true
+                 this.message.cart = []
+                 this.data.changeMessage(this.message)
                 });
             },
             onCancel: () => {

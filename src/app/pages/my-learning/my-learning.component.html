@@ -26,8 +26,8 @@
         <h3 class="head__three color__sec mt-3">My Paid Courses</h3>
 
         <div class="tab__body mt-2">
-          <div class="courses" *ngFor="let courseId of myCourses$| async">
-            <app-learning-card [courseId]="courseId"></app-learning-card>
+          <div class="courses" *ngFor="let course of myCourses$| async">
+            <app-learning-card [course]="course"></app-learning-card>
           </div>
         </div>
         <app-recommended></app-recommended>

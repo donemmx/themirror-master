@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { CoursesService } from 'src/app/api/services';
+import { CoursesService, LearnersService, PaymentService } from 'src/app/api/services';
 import { BaseComponent } from 'src/app/pages/base/base.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { v4 } from 'uuid';
 
 @Component({
   selector: 'app-pricing-card',
@@ -27,6 +28,8 @@ export class PricingCardComponent extends BaseComponent {
     router: Router,
     public auth: AuthService,
     public api: CoursesService,
+    private apiLearner:LearnersService,
+    private paymenetApi: PaymentService,
     private notify: NotificationService
   ) {
     super(data, router);
@@ -41,6 +44,14 @@ export class PricingCardComponent extends BaseComponent {
     this.videoModal = !this.videoModal;
   }
 
+  process(){
+    if(this.course.pricePlan?.price == 0){
+      this.enrollCourse()
+    }
+    else{
+      this.addToCart()
+    }
+  }
   addToCart() {
     this.loading = true;
     const data = this.isInCart(this.course.courseId);
@@ -55,6 +66,20 @@ export class PricingCardComponent extends BaseComponent {
     }
   }
 
+  enrollCourse(){
+    this.paymenetApi.registerPaystackPayment({
+      paystackId: v4(),
+        body: {
+          courseIds: [this.course.courseId],
+          method: 'free'
+        }
+      })
+      .subscribe(
+        (res) => {
+          this.router.navigateByUrl('/my-learning');
+        })
+  }
+
   login() {
     this.router.navigateByUrl('/login');
   }
@@ -64,7 +89,9 @@ export class PricingCardComponent extends BaseComponent {
   }
 
   alreadyPaid(id: any) {
-    return this.message.user?.courses.includes(id);
+    return this.apiLearner.getLearnerPaidCourses().subscribe((res: any) => {
+      res.courseId.includes(id);
+    })
   }
 
   proceed() {
