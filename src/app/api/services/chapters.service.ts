@@ -9,6 +9,7 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
+import { ChapterItem } from '../models/chapter-item';
 import { Question } from '../models/question';
 import { Upload } from '../models/upload';
 
@@ -25,6 +26,260 @@ export class ChaptersService extends BaseService {
     http: HttpClient
   ) {
     super(config, http);
+  }
+
+  /**
+   * Path part for operation getChapterItemByChapterItemId
+   */
+  static readonly GetChapterItemByChapterItemIdPath = '/chapter/{chapterItemId}/{chapterItem}';
+
+  /**
+   * Get Chapter Item by ID.
+   *
+   * Get Chapter Item By Chapter Item ID
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getChapterItemByChapterItemId()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getChapterItemByChapterItemId$Response(params: {
+    chapterItemId: string;
+    chapterItem: string;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ChapterItem>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ChaptersService.GetChapterItemByChapterItemIdPath, 'get');
+    if (params) {
+      rb.path('chapterItemId', params.chapterItemId, {});
+      rb.path('chapterItem', params.chapterItem, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<ChapterItem>;
+      })
+    );
+  }
+
+  /**
+   * Get Chapter Item by ID.
+   *
+   * Get Chapter Item By Chapter Item ID
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getChapterItemByChapterItemId$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getChapterItemByChapterItemId(params: {
+    chapterItemId: string;
+    chapterItem: string;
+  },
+  context?: HttpContext
+
+): Observable<ChapterItem> {
+
+    return this.getChapterItemByChapterItemId$Response(params,context).pipe(
+      map((r: StrictHttpResponse<ChapterItem>) => r.body as ChapterItem)
+    );
+  }
+
+  /**
+   * Path part for operation getAllChapterItemsByChapterId
+   */
+  static readonly GetAllChapterItemsByChapterIdPath = '/chapter/{chapterId}';
+
+  /**
+   * Get All Chapter Items.
+   *
+   * Get All Chapter Items By Chapter ID
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllChapterItemsByChapterId()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllChapterItemsByChapterId$Response(params: {
+    chapterId: string;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<ChapterItem>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ChaptersService.GetAllChapterItemsByChapterIdPath, 'get');
+    if (params) {
+      rb.path('chapterId', params.chapterId, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ChapterItem>>;
+      })
+    );
+  }
+
+  /**
+   * Get All Chapter Items.
+   *
+   * Get All Chapter Items By Chapter ID
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getAllChapterItemsByChapterId$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllChapterItemsByChapterId(params: {
+    chapterId: string;
+  },
+  context?: HttpContext
+
+): Observable<Array<ChapterItem>> {
+
+    return this.getAllChapterItemsByChapterId$Response(params,context).pipe(
+      map((r: StrictHttpResponse<Array<ChapterItem>>) => r.body as Array<ChapterItem>)
+    );
+  }
+
+  /**
+   * Path part for operation getAllQuestionsByQuizId
+   */
+  static readonly GetAllQuestionsByQuizIdPath = '/quiz/{quizId}/questions';
+
+  /**
+   * Get All Quiz Questions.
+   *
+   * Get All Questions by Quiz ID
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllQuestionsByQuizId()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllQuestionsByQuizId$Response(params: {
+    quizId: string;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<Question>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ChaptersService.GetAllQuestionsByQuizIdPath, 'get');
+    if (params) {
+      rb.path('quizId', params.quizId, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Question>>;
+      })
+    );
+  }
+
+  /**
+   * Get All Quiz Questions.
+   *
+   * Get All Questions by Quiz ID
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getAllQuestionsByQuizId$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllQuestionsByQuizId(params: {
+    quizId: string;
+  },
+  context?: HttpContext
+
+): Observable<Array<Question>> {
+
+    return this.getAllQuestionsByQuizId$Response(params,context).pipe(
+      map((r: StrictHttpResponse<Array<Question>>) => r.body as Array<Question>)
+    );
+  }
+
+  /**
+   * Path part for operation deleteQuestions
+   */
+  static readonly DeleteQuestionsPath = '/quiz/{quizId}/questions';
+
+  /**
+   * Delete Questions.
+   *
+   * Delete Questions from Quiz
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `deleteQuestions()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  deleteQuestions$Response(params: {
+    quizId: string;
+    body?: {
+'questionIds'?: Array<any>;
+}
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ChaptersService.DeleteQuestionsPath, 'delete');
+    if (params) {
+      rb.path('quizId', params.quizId, {});
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * Delete Questions.
+   *
+   * Delete Questions from Quiz
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `deleteQuestions$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  deleteQuestions(params: {
+    quizId: string;
+    body?: {
+'questionIds'?: Array<any>;
+}
+  },
+  context?: HttpContext
+
+): Observable<void> {
+
+    return this.deleteQuestions$Response(params,context).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
   }
 
   /**
@@ -548,7 +803,6 @@ export class ChaptersService extends BaseService {
 'isCertificate'?: true | false;
 'cerificateIssueType'?: 'manual' | 'automatic';
 'completionPercentage'?: number;
-'questions': Array<Question>;
 }
   },
   context?: HttpContext
@@ -602,7 +856,6 @@ export class ChaptersService extends BaseService {
 'isCertificate'?: true | false;
 'cerificateIssueType'?: 'manual' | 'automatic';
 'completionPercentage'?: number;
-'questions': Array<Question>;
 }
   },
   context?: HttpContext
@@ -610,6 +863,74 @@ export class ChaptersService extends BaseService {
 ): Observable<void> {
 
     return this.addQuiz$Response(params,context).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
+   * Path part for operation addQuestionsToQuiz
+   */
+  static readonly AddQuestionsToQuizPath = '/quiz/{quizId}/add-questions';
+
+  /**
+   * Add Questions.
+   *
+   * Add Questions to Quiz
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `addQuestionsToQuiz()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  addQuestionsToQuiz$Response(params: {
+    quizId: string;
+    body?: {
+'questions': Array<Question>;
+}
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ChaptersService.AddQuestionsToQuizPath, 'post');
+    if (params) {
+      rb.path('quizId', params.quizId, {});
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * Add Questions.
+   *
+   * Add Questions to Quiz
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `addQuestionsToQuiz$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  addQuestionsToQuiz(params: {
+    quizId: string;
+    body?: {
+'questions': Array<Question>;
+}
+  },
+  context?: HttpContext
+
+): Observable<void> {
+
+    return this.addQuestionsToQuiz$Response(params,context).pipe(
       map((r: StrictHttpResponse<void>) => r.body as void)
     );
   }
@@ -1063,6 +1384,67 @@ export class ChaptersService extends BaseService {
 
     return this.uploadChapterItem$Response(params,context).pipe(
       map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
+   * Path part for operation retrieveUpload
+   */
+  static readonly RetrieveUploadPath = '/upload/{uploadId}';
+
+  /**
+   * Retrieve Uploads.
+   *
+   * Retrieve Chapter Items Upload
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `retrieveUpload()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  retrieveUpload$Response(params: {
+    uploadId: string;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Blob>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ChaptersService.RetrieveUploadPath, 'get');
+    if (params) {
+      rb.path('uploadId', params.uploadId, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'blob',
+      accept: 'application/octet-stream',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Blob>;
+      })
+    );
+  }
+
+  /**
+   * Retrieve Uploads.
+   *
+   * Retrieve Chapter Items Upload
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `retrieveUpload$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  retrieveUpload(params: {
+    uploadId: string;
+  },
+  context?: HttpContext
+
+): Observable<Blob> {
+
+    return this.retrieveUpload$Response(params,context).pipe(
+      map((r: StrictHttpResponse<Blob>) => r.body as Blob)
     );
   }
 

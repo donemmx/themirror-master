@@ -157,7 +157,7 @@ export class PaymentService extends BaseService {
 
 ): Observable<StrictHttpResponse<void>> {
 
-    const rb = new RequestBuilder(this.rootUrl, PaymentService.PaystackCallbackPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, PaymentService.PaystackCallbackPath, 'get');
     if (params) {
       rb.path('paystackId', params.paystackId, {});
     }

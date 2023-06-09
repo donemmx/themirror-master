@@ -8,9 +8,11 @@ import { LearnersService } from './services/learners.service';
 import { AdminService } from './services/admin.service';
 import { CoursesService } from './services/courses.service';
 import { ApiService } from './services/api.service';
-import { CertificatesService } from './services/certificates.service';
 import { ChaptersService } from './services/chapters.service';
+import { CertificatesService } from './services/certificates.service';
+import { QueryService } from './services/query.service';
 import { PaymentService } from './services/payment.service';
+import { CourseProgressService } from './services/course-progress.service';
 import { CountryService } from './services/country.service';
 import { ForumService } from './services/forum.service';
 
@@ -26,9 +28,11 @@ import { ForumService } from './services/forum.service';
     AdminService,
     CoursesService,
     ApiService,
-    CertificatesService,
     ChaptersService,
+    CertificatesService,
+    QueryService,
     PaymentService,
+    CourseProgressService,
     CountryService,
     ForumService,
     ApiConfiguration
