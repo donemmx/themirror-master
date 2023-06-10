@@ -17,7 +17,7 @@
                     <p-progressBar [value]="0" [showValue]="false"></p-progressBar>
                 </div>
                 <div class="progress__right">
-                    <button pRipple class="primary__btn">{{course.duration ==0 ? 'Start Course' :'Resume Course'}}</button>
+                    <button pRipple class="primary__btn" (click)="proceedtToCourse()">{{course.duration ==0 ? 'Start Course' :'Resume Course'}}</button>
                 </div>
             </div>
     </div>

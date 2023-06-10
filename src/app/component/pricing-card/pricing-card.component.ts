@@ -37,7 +37,17 @@ export class PricingCardComponent extends BaseComponent {
   ngOnInit(): void {
     super.ngOnInit();
 
-    this.exists = this.alreadyPaid(this.course.courseId);
+    // this.exists = this.alreadyPaid(this.course.courseId);
+
+    let paid: any[] = []
+
+    this.apiLearner.getLearnerPaidCourses().subscribe((res: any) =>
+    {
+    this.exists = res.find(({courseId}:any)  => courseId === this.course.courseId)
+    }
+    )
+
+    
   }
 
   openVideo() {
@@ -89,9 +99,14 @@ export class PricingCardComponent extends BaseComponent {
   }
 
   alreadyPaid(id: any) {
-    return this.apiLearner.getLearnerPaidCourses().subscribe((res: any) => {
-      res.courseId.includes(id);
-    })
+    let paid: any[] = []
+
+     this.apiLearner.getLearnerPaidCourses().subscribe((res: any) => paid.push(...res)
+     )
+
+    return paid.find(({courseId}:any)  => courseId === id)
+
+     
   }
 
   proceed() {

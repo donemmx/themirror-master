@@ -66,7 +66,7 @@ cardForm: FormGroup;
           paystack.newTransaction({
             key: res.key,
             email: res.email,
-            amount: res.amount/100,
+            amount: res.amount,
             ref: res.reference,
             onSuccess: (transaction: any) => {
               console.log(transaction);

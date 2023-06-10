@@ -23,7 +23,7 @@
                     Proceed to Course
                   </button>
                   <button *ngIf="!exists"  pRipple [class]="'primary__btn' + ' ' + category.selected" (click)="auth.isUserLoggedIn() ? process() : login() "> <i class="pi pi-spin pi-spinner" *ngIf="loading"></i>
-                    {{auth.isUserLoggedIn() ? 'Enroll Now': 'Login to Enroll'}}
+                    {{auth.isUserLoggedIn() ?  'Enroll Now': 'Login to Enroll'}}
                   </button>
             </div>
         </div>
