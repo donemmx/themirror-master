@@ -10,13 +10,15 @@ import { Observable } from 'rxjs';
 export class VideoFrameComponent {
   @Input() videoId$: Observable<any>;
   videoUrl: any;
+
   constructor(private sanitize: DomSanitizer){
   }
 
-  
-  
+
+
   ngOnInit(): void {
     this.videoId$.subscribe((res)=> {
+      console.log(res);
      if (res.includes('youtube')) {
        this.getYoutubeId(res);
      } else if (res.includes('youtu.be')) {
@@ -24,13 +26,13 @@ export class VideoFrameComponent {
      } else {
        this.videoUrl = this.sanitize.bypassSecurityTrustResourceUrl(res);
      }
- 
+
      })
-    
-     
+
+
    }
- 
- 
+
+
    getYoutubeId(value: any) {
      this.videoId$.subscribe((res)=> {
      if (res.includes('=')) {
@@ -44,20 +46,17 @@ export class VideoFrameComponent {
            `https://www.youtube.com/embed/${tempLink}`
          );
        }
-     } 
+     }
    })
    }
- 
+
    getIframLink(value: any) {
      this.videoId$.subscribe((res)=> {
      if (res.includes('be/')) {
        const tempLink = value.split('be/')[1];
-       console.log(tempLink);
-       
        this.videoUrl = this.sanitize.bypassSecurityTrustResourceUrl(
          `https://www.youtube.com/embed/${tempLink}`
        );
      }})
    }
  }
- 

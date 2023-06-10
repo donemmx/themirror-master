@@ -97,7 +97,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { AnimationOneComponent } from './animation-one/animation-one.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProgressBarModule } from 'primeng/progressbar';
-
+import { BlockUIModule } from 'primeng/blockui';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -208,6 +208,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     ChipModule,
     TagModule,
     SkeletonModule,
+    BlockUIModule,
     AccordionModule,
     ApiModule.forRoot({ rootUrl: environment.apiUrl }),
   ],
@@ -216,7 +217,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
   providers: [
     JwtInterceptor,
     API_INTERCEPTOR_PROVIDER,
-   
+
   ],
   bootstrap: [AppComponent]
 })
