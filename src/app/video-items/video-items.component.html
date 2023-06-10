@@ -4,16 +4,30 @@
         <p-accordion>
           <div
             class="main__accordion"
-            *ngFor="let data of [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+            *ngFor="let data of chapters$ | async"
           >
-            <p-accordionTab>
+            <p-accordionTab  header="{{ data.chapterOrder }}">
               <ng-template pTemplate="header">
                 <div class="header__content">
-                  <div class="header__left">Children</div>
+                  <div class="header__left">{{data.title}}</div>
+                  <div class="header__right">{{data.chapterItems.length > 1 ? (data.chapterItems.length + ' ' + 'items') : (data.chapterItems.length + ' ' + 'item')}} </div>
+
                 </div>
               </ng-template>
-              <ng-template pTemplate="content">
-                    Lorem ipsum dolor sit amet.
+              <ng-template pTemplate="body">
+                <div class="chapter__items" *ngFor="let details of data.chapterItems">
+                  <div class="outcome__card mt-1">
+                    <div [ngSwitch]="details.chapterItemName">
+                      <img class="itemsIcon" *ngSwitchCase="'text'" src="../../assets/items/content.svg" alt="" />
+                      <img class="itemsIcon" *ngSwitchCase="'link'" src="../../assets/items/link-icon.svg" alt="" />
+                      <img class="itemsIcon" *ngSwitchCase="'pdf'" src="../../assets/items/document-icon.svg" alt="" />
+                      <img class="itemsIcon" *ngSwitchCase="'image'" src="../../assets/items/video.svg" alt="" />
+                    </div>
+                    <div class="outcomeHeading">
+                      {{ details.title }}
+                    </div>
+                  </div>
+                </div>
               </ng-template>
             </p-accordionTab>
           </div>

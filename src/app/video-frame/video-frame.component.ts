@@ -44,9 +44,7 @@ export class VideoFrameComponent {
            `https://www.youtube.com/embed/${tempLink}`
          );
        }
-     } else {
-       this.videoUrl = '';
-     }
+     } 
    })
    }
  

@@ -1,7 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Route } from '@angular/router';
+import { truncate } from 'fs';
 import { Message } from 'primeng/api';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CoursesService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-video',
@@ -12,20 +15,24 @@ export class VideoComponent implements OnInit {
 @Input() source: any;
 messages: Message[];
 course$: Observable<any>
+chapters$: Observable<any>
 link$ = new BehaviorSubject<any>('')
-
-pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
-constructor(@Inject(DOCUMENT) private document: Document){
+loading: boolean = true
+constructor( private api: CoursesService, private route:ActivatedRoute){
 }
 ngOnInit(){
-// this.link$.next(this.pdfSrc)
+this.route.params.subscribe((res)=> {
+ this.course$ = this.api.getCourse({
+    courseId: res.id
+  })
+
+  this.chapters$ = this.api.getChaptersForLoggedInLearners({
+    courseId: res.id
+  })
+
+})
 }
 
-ngAfterViewInit(){
-  const iframe: any = this.document.querySelector('iframe')
-  console.log(iframe.contentWindow.document);
-  
-}
 
 next(){
   

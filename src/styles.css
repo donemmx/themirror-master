@@ -362,16 +362,6 @@ label{
   background: white;
 }
 
-iframe {
-  width: 100vw !important;
-  margin: auto !important;
-  position: fixed;
-  height: 100vh ;
-  bottom: 0% !important;
-  z-index: 1000;
-}
-
-
 
 @media screen and (max-width:1080px) {
   .header__container{

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-video-items',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./video-items.component.css']
 })
 export class VideoItemsComponent {
-
+ @Input() chapters$: Observable<any>
 }
