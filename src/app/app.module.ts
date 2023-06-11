@@ -101,6 +101,8 @@ import { BlockUIModule } from 'primeng/blockui';
 import { TextItemComponent } from './text-item/text-item.component';
 import { QuizItemComponent } from './quiz-item/quiz-item.component';
 import { AssignmentItemComponent } from './assignment-item/assignment-item.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -213,6 +215,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     CheckboxModule,
     ChipModule,
     TagModule,
+    NgxPayPalModule,
     SkeletonModule,
     BlockUIModule,
     AccordionModule,

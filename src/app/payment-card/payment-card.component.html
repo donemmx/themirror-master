@@ -4,13 +4,25 @@
     <div class="payment__type">
       Payment method
       <div class="payment__mode pt-1">
-        <button class="payment whiteBtn">Credit Card</button>
-        <button class="payment outlineBtn">PayPal</button>
+          <p-selectButton
+            [options]="methodList"
+            [(ngModel)]="method"
+            (onChange)="logResult($event)"
+          >
+            <ng-template let-item>
+              <div class="grouped__data">
+                <p>{{ item }}</p>
+              </div>
+            </ng-template>
+          </p-selectButton>
       </div>
 
-      <button class="payment whiteBtn full mt-4 mb-3" (click)="pay()">
-        Complete Check out
+      <button *ngIf="method === 'paystack'" class="payment whiteBtn full mt-4 mb-3" (click)="pay()">
+        Pay With Paystack
       </button>
+      <div class="pt-4">
+        <ngx-paypal *ngIf="method === 'paypal'" [config]="payPalConfig"></ngx-paypal>
+      </div>
     </div>
 
   </div>
@@ -22,7 +34,7 @@
         background="none"
         animation
         style="height: 420px"
-      
+
       >
       </lottie-player>
 </div>

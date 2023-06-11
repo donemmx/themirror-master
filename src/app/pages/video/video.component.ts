@@ -11,7 +11,7 @@ import { ActivatedRoute, Route } from '@angular/router';
 import { truncate } from 'fs';
 import { Message } from 'primeng/api';
 import { BehaviorSubject, Observable, of, tap } from 'rxjs';
-import { CoursesService } from 'src/app/api/services';
+import { CourseProgressService, CoursesService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-video',
@@ -28,7 +28,7 @@ export class VideoComponent implements OnInit {
   chapterItem: any;
   courseId: any
   of= of
-  constructor(private api: CoursesService, private route: ActivatedRoute) {}
+  constructor(private api: CoursesService, private route: ActivatedRoute, private progressApi: CourseProgressService) {}
   ngOnInit() {
     this.route.params.subscribe((res) => {
       this.courseId = res.id
@@ -47,6 +47,14 @@ export class VideoComponent implements OnInit {
           })
         );
     });
+
+    this.progressApi.addCourseProgress({
+      body: {
+        courseId: this.courseId,
+        chapterId: '45e0a84b-7954-4c25-adf9-24af25f6afb8',
+        chapterItemId: '45e0a84b-7954-4c25-adf9-24af25f6afb8'
+      }
+    }).subscribe()
   }
 
   next() {}
@@ -56,4 +64,6 @@ export class VideoComponent implements OnInit {
     this.chapterItem = event
 
   }
+
+  // done()
 }
