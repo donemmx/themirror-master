@@ -46,7 +46,7 @@
         <p-tabPanel header="Overview">
           <div class="tab__body" *ngIf="course$ | async as course">
             <div class="section">
-              <app-info [type]="'warn'"></app-info>
+              <!-- <app-info [type]="'warn'"></app-info> -->
               <h4 class="head__four pb-2">About this Course</h4>
               <p class="learning__text">
                 {{ course.description }}
