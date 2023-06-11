@@ -14,19 +14,34 @@
           </button>
         </div> -->
         <div class="video" *ngIf="chapterItem as item">
-            <app-video-frame *ngIf="item.chapterItemName ==='link'" [videoId$]="of(item.link)"></app-video-frame>
-              <div *ngIf="item.chapterItemName ==='text'"> {{item.content}}</div>
+          <app-video-frame
+            *ngIf="item.chapterItemName === 'link'"
+            [videoId$]="of(item.link)"
+          ></app-video-frame>
+          <app-text-item *ngIf="item.chapterItemName === 'text'" [item]="item"></app-text-item>
+          <app-assignment-item *ngIf="item.chapterItemName === 'assignment'" [item]="item"></app-assignment-item>
 
         </div>
       </div>
+      <div class="" *ngIf="loading">
+        <p-skeleton styleClass="mb-1"></p-skeleton>
+        <p-skeleton width="10rem" styleClass="mb-1"></p-skeleton>
+        <p-skeleton width="5rem" styleClass="mb-1"></p-skeleton>
+        <p-skeleton height="10rem" styleClass="mb-1"></p-skeleton>
+      </div>
       <div class="right">
         <div class="video__right">
-          <app-video-items [chapters$]="chapters$" [activeIndex]="0" [courseId]="courseId" (chapterItem)="getChapterItem($event)"> </app-video-items>
+          <app-video-items
+            [chapters$]="chapters$"
+            [activeIndex]="0"
+            [courseId]="courseId"
+            (chapterItem)="getChapterItem($event)"
+          >
+          </app-video-items>
         </div>
       </div>
     </div>
     <div class="video__left">
-
       <p-tabView>
         <p-tabPanel header="Overview">
           <div class="tab__body" *ngIf="course$ | async as course">
@@ -49,9 +64,7 @@
             <div class="section">
               <h4 class="head__four pb-2 pt-4">Learning Outcomes</h4>
               <div class="learning__card">
-                <div
-                  class="learning__cardBody"
-                >
+                <div class="learning__cardBody">
                   <div
                     class="learning__text"
                     *ngFor="let outcome of course.learningOutcomes"
@@ -113,7 +126,6 @@
         </p-tabPanel>
       </p-tabView>
     </div>
-
   </div>
 </div>
 

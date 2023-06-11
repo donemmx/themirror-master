@@ -98,6 +98,9 @@ import { AnimationOneComponent } from './animation-one/animation-one.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { BlockUIModule } from 'primeng/blockui';
+import { TextItemComponent } from './text-item/text-item.component';
+import { QuizItemComponent } from './quiz-item/quiz-item.component';
+import { AssignmentItemComponent } from './assignment-item/assignment-item.component';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -173,6 +176,9 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     ParallaxDirective,
     LandingComponent,
     AnimationOneComponent,
+    TextItemComponent,
+    QuizItemComponent,
+    AssignmentItemComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

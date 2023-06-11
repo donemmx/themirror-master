@@ -1,22 +1,25 @@
 .mylearning__top{
-    height: 100vh;
-    background-image: url(../../../assets/header/learning-bg.png);
+    height: 80vh;
+    background-image: url(../../../assets/hero/bg-learning.png);
     background-size: cover;
     position: relative;
 }
 
 .group__text{
     position: absolute;
-    top: 20%;
+    top: 40%;
     left: 13%;
 }
 
 .head__three{
     color: var(--white);
+    font-size: clamp(1.6rem, 4vw, 2rem);
 }
 
 .head__one{
     color: var(--secondary-color);
+    font-size: clamp(2.6rem, 5vw, 8rem);
+
 }
 
 .text{

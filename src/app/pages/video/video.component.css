@@ -6,6 +6,8 @@
 .video__main{
 display: grid;
 grid-template-columns: 8fr 4fr;
+height: 70vh;
+overflow: hidden;
 }
 
 :host ::ng-deep .p-tabview-nav-container {
@@ -37,6 +39,12 @@ grid-template-columns: 8fr 4fr;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
 }
+
+.right{
+  overflow-y: scroll;
+
+}
+
 
 .tab__body {
   width: 90%;

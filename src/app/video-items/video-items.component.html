@@ -14,7 +14,8 @@
 
                 </div>
               </ng-template>
-              <ng-template pTemplate="content" *ngIf="progress$ | async as progress">
+              <!-- <ng-template pTemplate="content" *ngIf="progress$ | async as progress"> -->
+              <ng-template pTemplate="content">
                 <div class="chapter__items" *ngFor="let details of data.chapterItems">
 
                   <div class="outcome__card mt-1" (click)="getChapterItem(details)">

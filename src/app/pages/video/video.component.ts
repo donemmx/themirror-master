@@ -43,6 +43,7 @@ export class VideoComponent implements OnInit {
         .pipe(
           tap((res: any) => {
             this.chapterItem = res[0].chapterItems[0];
+            this.loading = false
           })
         );
     });
