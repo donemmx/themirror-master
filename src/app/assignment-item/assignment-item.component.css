@@ -14,8 +14,15 @@
 
 .desc {
   font-size: clamp(.85rem, 2.5vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
  }
 
+ .desc span{
+  color: var(--primary-color);
+  font-weight: bold;
+ }
 
 .download{
   width: 200px;
