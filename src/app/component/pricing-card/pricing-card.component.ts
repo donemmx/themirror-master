@@ -47,7 +47,7 @@ export class PricingCardComponent extends BaseComponent {
     }
     )
 
-    
+
   }
 
   openVideo() {
@@ -77,8 +77,8 @@ export class PricingCardComponent extends BaseComponent {
   }
 
   enrollCourse(){
-    this.paymenetApi.registerPaystackPayment({
-      paystackId: v4(),
+    this.paymenetApi.registerPayment({
+      payId: v4(),
         body: {
           courseIds: [this.course.courseId],
           method: 'free'
@@ -106,7 +106,7 @@ export class PricingCardComponent extends BaseComponent {
 
     return paid.find(({courseId}:any)  => courseId === id)
 
-     
+
   }
 
   proceed() {
