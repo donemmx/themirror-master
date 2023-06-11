@@ -1,7 +1,6 @@
 export { LearnersService } from './services/learners.service';
 export { AdminService } from './services/admin.service';
 export { CoursesService } from './services/courses.service';
-export { ApiService } from './services/api.service';
 export { ChaptersService } from './services/chapters.service';
 export { CertificatesService } from './services/certificates.service';
 export { QueryService } from './services/query.service';

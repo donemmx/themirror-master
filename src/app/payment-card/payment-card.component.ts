@@ -60,16 +60,17 @@ export class PaymentCardComponent extends BaseComponent {
       mycourseIds.push(items.courseId);
     });
 
-    this.loading = true;
     this.api
-      .registerPaystackPayment({
-        paystackId: v4(),
+      .registerPayment({
+        payId: v4(),
         body: {
           courseIds: mycourseIds,
           method: this.method,
         },
       })
       .subscribe((res) => {
+        console.log(res.key);
+
         const paystack = new PaystackPop();
         paystack.newTransaction({
           key: res.key,
@@ -79,7 +80,7 @@ export class PaymentCardComponent extends BaseComponent {
           onSuccess: (transaction: any) => {
             console.log(transaction);
             this.api
-              .paystackCallback({ paystackId: res.reference })
+              .paystackCallback({ payId: res.reference })
               .subscribe(() => {
                 this.loading = false;
                 this.success = true;
@@ -105,8 +106,8 @@ export class PaymentCardComponent extends BaseComponent {
     });
 
     this.api
-    .registerPaystackPayment({
-      paystackId: v4(),
+    .registerPayment({
+      payId: v4(),
       body: {
         courseIds: mycourseIds,
         method: this.method,
@@ -156,7 +157,7 @@ export class PaymentCardComponent extends BaseComponent {
       onClientAuthorization: (data) => {
 
         this.api
-        .paystackCallback({ paystackId: res.reference })
+        .paypalCallback({ payId: res.reference })
         .subscribe(() => {
           this.loading = false;
           this.success = true;
