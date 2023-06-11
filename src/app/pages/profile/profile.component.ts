@@ -82,7 +82,7 @@ export class ProfileComponent extends BaseComponent {
         () => {
           this.loading = false;
           this.notify.success('profile image udated');
-          this.getLearnerProfile(this.api);
+          this.getUser(this.api, this.auth);
           this.clear()
         },
         (err) => {

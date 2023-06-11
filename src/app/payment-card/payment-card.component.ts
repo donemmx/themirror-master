@@ -23,9 +23,6 @@ declare const PaystackPop: any;
   styleUrls: ['./payment-card.component.css'],
 })
 export class PaymentCardComponent extends BaseComponent {
-  cardForm: FormGroup;
-  amount: any;
-
   payPalConfig?: IPayPalConfig;
   @Input() courses: any;
   loading: boolean = false;
@@ -138,18 +135,6 @@ export class PaymentCardComponent extends BaseComponent {
                   },
                 },
               },
-              items: [
-                {
-                  name: res.product,
-                  quantity: '1',
-                  description: res.product,
-                  category: 'DIGITAL_GOODS',
-                  unit_amount: {
-                    currency_code: 'USD',
-                    value: res.amount,
-                },
-                },
-              ],
             },
           ],
         },
