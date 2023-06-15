@@ -102,6 +102,7 @@ import { TextItemComponent } from './text-item/text-item.component';
 import { QuizItemComponent } from './quiz-item/quiz-item.component';
 import { AssignmentItemComponent } from './assignment-item/assignment-item.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
@@ -181,6 +182,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     TextItemComponent,
     QuizItemComponent,
     AssignmentItemComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

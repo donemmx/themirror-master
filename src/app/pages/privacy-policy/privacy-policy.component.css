@@ -1,0 +1,24 @@
+.privacy__policy{
+    margin-top: 80px;
+    padding: 80px 0;
+}
+
+.privacy__body{
+    width: 80%;
+    margin: auto;
+}
+
+p{
+    line-height: 1.9;
+    margin-top: 30px;
+}
+
+span{
+    font-weight: bold;
+
+}
+
+ol {
+    margin-top: 30px;
+    margin-left: 20px;
+}

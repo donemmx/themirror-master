@@ -1,3 +1,4 @@
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -79,6 +80,9 @@ const routes: Routes = [
   },
   {
     path: 'welcome', component: WelcomeComponent,  canActivate: [AuthGuard]
+  },
+  {
+    path: 'privacy-policy', component: PrivacyPolicyComponent,  
   },
   {
     path: '', pathMatch: 'full', redirectTo: '/home'
