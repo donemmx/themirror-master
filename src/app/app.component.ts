@@ -1,29 +1,37 @@
-import {  AfterContentInit, AfterViewInit, Component, Inject, OnInit, } from '@angular/core';
-import { PrimeNGConfig} from 'primeng/api';
-import * as AOS from "aos";
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
+import * as AOS from 'aos';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, AfterContentInit {
   title = 'themirror';
-  lightbox:any;
-  hide: boolean = false
-event: any;
+  lightbox: any;
+  hide: boolean = false;
+  event: any;
   constructor(
     private primengConfig: PrimeNGConfig,
-    @Inject(DOCUMENT) private document: Document,
-   ){
-  }
-  ngOnInit(){
+    @Inject(DOCUMENT) private document: Document
+  ) {}
+  ngOnInit() {
     this.primengConfig.ripple = true;
-    
-    const selected = sessionStorage.getItem('message')
+
+    const selected = sessionStorage.getItem('message');
     if (selected == null) {
-      sessionStorage.setItem('message', JSON.stringify({selected: 'young adult'})) ;
+      sessionStorage.setItem(
+        'message',
+        JSON.stringify({ selected: 'young adult' })
+      );
     }
   }
 
@@ -31,11 +39,8 @@ event: any;
     AOS.init();
   }
 
-
-  loading(event: any){
+  loading(event: any) {
     console.log(event);
-    this.hide = true
+    this.hide = true;
   }
-
-
 }

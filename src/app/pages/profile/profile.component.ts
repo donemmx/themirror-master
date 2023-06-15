@@ -51,7 +51,6 @@ export class ProfileComponent extends BaseComponent {
       .then(
         (result: string) => {
           this.imgResult = result;
-          console.log(result);
         },
         (result: string) => {
           console.error(
@@ -59,7 +58,7 @@ export class ProfileComponent extends BaseComponent {
             this.imageCompress.byteCount(result),
             'bytes'
           );
-          this.notify.error('Image too large')
+          this.imgResult = result;
         }
       );
   }
