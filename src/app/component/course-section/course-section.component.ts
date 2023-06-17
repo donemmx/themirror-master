@@ -48,6 +48,10 @@ export class CourseSectionComponent extends BaseComponent {
         this.loading = false
       }))
     }
+    
+          this.spiritual$ = this.getCourses('spiritual');
+          this.education$ = this.getCourses('education');
+          this.identity$ = this.getCourses('identity')
 
     this.courses$ = this.api.getAllCourses({
       ageCategory: this.message.selected,
@@ -64,7 +68,7 @@ export class CourseSectionComponent extends BaseComponent {
     return this.api.getAllCourses({
       ageCategory: this.message.selected,
       courseCategory: courseCategory
-    }).pipe(map((res)=> res.data.splice(0,4)), tap((res)=> {
+    }).pipe(map((res)=> res.data.splice(0,6)), tap((res)=> {
       this.loading = false
     }))
   }

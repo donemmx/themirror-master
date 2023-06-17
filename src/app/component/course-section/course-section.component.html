@@ -103,6 +103,40 @@
   </ng-template>
 
   <ng-template [ngIf]="!auth.isUserLoggedIn()">
+    <section class="section__container pt-4">
+      <div class="section__header">
+        <h3 class=" font-bold"> Identity </h3>
+        <a routerLink="" class="small" routerLink="/courses">View All</a>
+      </div>
+      <div class="course__section md:grid md:grid-cols-2" @listAnimation>
+          <div class="course__container" *ngFor="let course of (identity$ | async)">
+            <app-course-card [course]="course"></app-course-card>
+          </div>
+      </div>
+    </section>
+    <section class="section__container pt-4"  >
+      <div class="section__header">
+        <h3 class=" font-bold"> Education </h3>
+        <a routerLink="" class="small" routerLink="/courses">View All</a>
+      </div>
+      <div class="course__section md:grid md:grid-cols-2" @listAnimation>
+          <div class="course__container" *ngFor="let course of (education$ | async)">
+            <app-course-card [course]="course" ></app-course-card>
+          </div>
+      </div>
+    </section>
+    <section class="section__container pt-4">
+      <div class="section__header">
+        <h3 class=" font-bold"> Spiritual </h3>
+        <a routerLink="" class="small" routerLink="/courses">View All</a>
+      </div>
+      <div class="course__section md:grid md:grid-cols-2" @listAnimation>
+          <div class="course__container" *ngFor="let course of (spiritual$ | async)">
+            <app-course-card [course]="course" ></app-course-card>
+          </div>
+      </div>
+    </section>
+   
     
   </ng-template>
   
