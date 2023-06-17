@@ -271,6 +271,10 @@ label{
   color: var(--black);
 }
 
+.search-none {
+  border: none;
+}
+
 .search input{
   outline: none;
   width: 100%;
