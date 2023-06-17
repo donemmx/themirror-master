@@ -15,7 +15,7 @@
         <i class="pi pi-search size"></i>
         <input type="text" placeholder="Search for Course" />
       </div>
-      
+      v
       <ng-template [ngIf]="auth.isUserLoggedIn() == false">
         <div class="header__right">
       
@@ -86,56 +86,7 @@
 </nav>
 
 <div class="mobile__sidebar" *ngIf="visible">
-  <nav  #header *ngIf="category$ | async as category" [class]="'sidebar' + ' ' + category.selected">
-    <div class="grouped__sidebarItems">
-      <div class="logo" routerLink="/home">
-        <img src="/assets/logo/logo.png" alt="" draggable="false" />
-      </div>
-    <div *ngIf="auth.isUserLoggedIn() == false" class="dropdown" (click)="openCategory()">
-      <i class="pi pi-list size"></i>
-      Category
-    </div>
-    <div class="search">
-      <i class="pi pi-search size"></i>
-      <input type="text" placeholder="Search for Course" />
-    </div>
-      <ng-template [ngIf]="auth.isUserLoggedIn() == false">
-        <div class="main__sidebar">
-          <ul>
-            <li routerLink="/courses">Courses</li>
-          </ul>
-          <button pRipple class="secondary__btn" routerLink="/login">
-            Login
-          </button>
-          <button pRipple class="primary__btn" routerLink="/signup">
-            Sign Up
-          </button>
-        </div>
-      </ng-template>
-      <ng-template [ngIf]="auth.isUserLoggedIn() == true">
-        
-        <div class="main__sidebar" >
-          <ul>
-            <li routerLink="/courses">Courses</li>
-          </ul>
-          <li routerLink="/my-learning">My Learning</li>
-          <i class="pi pi-shopping-cart header__icon" style="font-size: 1.2rem" pBadge [value]="category.cart?.length" ></i>
-          <i class="pi pi-bell header__icon" style="font-size: 1.2rem"  ></i>
-          <p-avatar
-            [label]="label | uppercase "
-            styleClass="mr-2 "
-            size="small"
-            class="cursor"
-            shape="circle"
-            *ngIf="category.profilePic == null; else image"
-          ></p-avatar>
-          <ng-template #image>
-            <img class="profile__pic" [src]="category.profilePic" alt=""  >
-          </ng-template>
-        </div>
-      </ng-template>
-    </div>
-  </nav>
+  <app-sidebar></app-sidebar>
 </div>
 
 <app-menu [hide]="menu"></app-menu>

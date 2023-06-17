@@ -15,7 +15,7 @@ export class SidebarComponent extends BaseComponent {
   constructor(
     data: DataService,
     router: Router,
-    private auth: AuthService,
+    public auth: AuthService,
     private api: LearnersService,
     private noteApi: NotificationService
   ) {
