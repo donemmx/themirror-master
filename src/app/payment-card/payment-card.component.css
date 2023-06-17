@@ -1,134 +1,144 @@
 .payment__card {
-  padding: 20px;
-  width: 450px;
-  margin: auto;
-  background: var(--blue);
-  border-radius: 10px;
-  box-shadow: var(--shadow-one);
-}
-
-:host ::ng-deep .p-button:focus{
-  box-shadow: none;
-}
-
-:disabled.payment{
-    background: rgb(121, 121, 121);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-one);
+  }
+  
+  :host ::ng-deep .p-button{
+    font-size: .75rem;
+  }
+  
+  :host ::ng-deep .p-button:focus{
+    box-shadow: none;
+  }
+  
+  :disabled.payment{
+      background: rgb(121, 121, 121);
+      color: var(--white);
+      border-color: var(--black);
+  }
+  .payment__main {
+    display: grid;
+    grid-gap: 10px;
+    width: 100%;
+  }
+  
+  .payment__title {
+    font-size: 1rem;
     color: var(--white);
-    border-color: var(--black);
-}
-.payment__main {
-  display: grid;
-  grid-gap: 10px;
-  width: 100%;
-}
-
-.payment__title {
-  font-size: 1.7rem;
-  color: var(--white);
-  font-variation-settings: "wght" 700;
-}
-.payment__type {
-  font-size: 1rem;
-  color: var(--white);
-  font-variation-settings: "wght" 300;
-}
-
-.payment {
-  width: 130px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: all 250ms ease-out;
-  color: var(--blue);
-}
-
-.payment:hover{
-    background: black;
-    color: var(--white);
-    border-color: var(--black);
-}
-
-.payment__mode{
+    font-variation-settings: "wght" 700;
+  }
+  .payment__type {
+    font-size: .85rem;
+    font-variation-settings: "wght" 300;
+  }
+  
+  .payment {
+    width: 130px;
+    height: 45px;
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-
-
-.whiteBtn{
-    background: var(--white);
-    color: var(--blue);
-    border: 1px solid var(--white);
-
-}
-
-.outlineBtn{
-    background: none;
-    border: 1px solid var(--white);
-    color: var(--white);
-}
-
-.payment__group{
-    display: grid;
-    gap: 10px;
-}
-
-.payment__group input{
-    width: 100%;
-    padding: 10px;
-    /* height: 50px; */
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--white);
-    outline: none;
-    color: var(--white);
-}
-
-:host ::ng-deep .p-inputtext{
-    width: 100% !important;
-    padding: 4px;
-    /* height: 50px; */
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--white);
-    outline: none;
-    color: var(--white);
-    box-shadow: none;
-    letter-spacing: .75rem;
-    border-radius: 0;
-
-}
-
-:host ::ng-deep .p-inputtext:enabled:focus{
-    box-shadow: none;
-    border: none;
-    text-decoration: none;
-    border-radius: 0;
-}
-
-
-::placeholder{
-    color: whitesmoke;
-}
-
-.main__grouped{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-
-}
-
-label{
-    color: var(--white);
-}
-
-
-@media screen and (max-width: 580px) {
-    .payment__card{
-        width: 100%;
-    }
-
-}
+    justify-content: center;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 250ms ease-out;
+    color: black;
+  }
+  
+  .payment:hover{
+      background: black;
+      color: var(--white);
+      border-color: var(--black);
+  }
+  
+  .payment__mode{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+  }
+  
+  
+  .whiteBtn{
+      background: var(--white);
+      color: var(--black);
+      border: 1px solid var(--black);
+  
+  }
+  
+  .outlineBtn{
+      background: none;
+      border: 1px solid var(--white);
+      color: var(--white);
+  }
+  
+  .payment__group{
+      display: grid;
+      gap: 10px;
+  }
+  
+  :host ::ng-deep .p-selectbutton{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .payment__group input{
+      width: 100%;
+      padding: 10px;
+      /* height: 50px; */
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--white);
+      outline: none;
+      color: var(--white);
+  }
+  
+  :host ::ng-deep .p-inputtext{
+      width: 100% !important;
+      padding: 4px;
+      /* height: 50px; */
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--white);
+      outline: none;
+      color: var(--white);
+      box-shadow: none;
+      letter-spacing: .75rem;
+      border-radius: 0;
+  
+  }
+  
+  :host ::ng-deep .p-inputtext:enabled:focus{
+      box-shadow: none;
+      border: none;
+      text-decoration: none;
+      border-radius: 0;
+  }
+  
+  
+  ::placeholder{
+      color: whitesmoke;
+  }
+  
+  .main__grouped{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+  
+  }
+  
+  label{
+      color: var(--white);
+  }
+  
+  :host ::ng-deep .paypal-button-number-1{
+    display: none !important;
+  }
+  
+  @media screen and (max-width: 580px) {
+      .payment__card{
+          width: 100%;
+      }
+  
+  }
+  

@@ -103,6 +103,9 @@ import { QuizItemComponent } from './quiz-item/quiz-item.component';
 import { AssignmentItemComponent } from './assignment-item/assignment-item.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { PdfItemComponent } from './pages/pdf-item/pdf-item.component';
+import { SidebarComponent } from './pages/sidebar/sidebar.component';
+import { NotifcationComponent } from './pages/notifcation/notifcation.component';
 
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
@@ -182,7 +185,10 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     TextItemComponent,
     QuizItemComponent,
     AssignmentItemComponent,
+    PdfItemComponent,
+    SidebarComponent,
     PrivacyPolicyComponent,
+    NotifcationComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

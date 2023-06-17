@@ -7,6 +7,7 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 import { LearnersService } from './services/learners.service';
 import { AdminService } from './services/admin.service';
 import { CoursesService } from './services/courses.service';
+import { LearnerService } from './services/learner.service';
 import { ChaptersService } from './services/chapters.service';
 import { CertificatesService } from './services/certificates.service';
 import { QueryService } from './services/query.service';
@@ -14,6 +15,7 @@ import { PaymentService } from './services/payment.service';
 import { CourseProgressService } from './services/course-progress.service';
 import { CountryService } from './services/country.service';
 import { ForumService } from './services/forum.service';
+import { NotificationService } from './services/notification.service';
 
 /**
  * Module that provides all services and configuration.
@@ -26,6 +28,7 @@ import { ForumService } from './services/forum.service';
     LearnersService,
     AdminService,
     CoursesService,
+    LearnerService,
     ChaptersService,
     CertificatesService,
     QueryService,
@@ -33,6 +36,7 @@ import { ForumService } from './services/forum.service';
     CourseProgressService,
     CountryService,
     ForumService,
+    NotificationService,
     ApiConfiguration
   ],
 })

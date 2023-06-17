@@ -1,0 +1,44 @@
+<div class="sidebar__main">
+  <div class="sidebar__container">
+    <div class="image flex items-center pt-5 gap-2">
+      <p-avatar
+        [label]="(this.message.user?.name?.split(' ')[0][0]) | uppercase"
+        styleClass="mr-2 "
+        size="large"
+        class="cursor"
+        shape="circle"
+        *ngIf="message.user.pictureUrl.length == 0; else image"
+      ></p-avatar>
+      <ng-template #image>
+        <img
+          class="rounded-full h-[60px] w-[60px] object-cover"
+          [src]="message.user.pictureUrl"
+          alt=""
+        />
+      </ng-template>
+
+      <div class="">
+        <p class="font-bold">{{message.user?.name | titlecase}}</p>
+        <small>{{message.user?.email}}</small>
+      </div>
+    </div>
+    <div class="sidebar__left grid gap-2 pt-3 ">
+      <div routerLink="/home" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"> Home <i class="pi pi-angle-right ml-auto  p-1"></i></div>
+      <hr>
+      <div routerLink="/courses" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm">Courses <i class="pi pi-angle-right ml-auto  p-1"></i></div>
+      <hr>
+      <div *ngIf="category$ | async as category" routerLink="/cart" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 " > <p class=" pr-4 w-fit text-sm" pBadge [value]="category.cart?.length">Cart </p>  <i class="pi pi-angle-right ml-auto  p-1"></i></div>
+      <hr>
+      <div routerLink="/notification" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm" > <p class="pr-4 w-fit text-sm" pBadge [value]="totalNote.length"> Notification </p>  <i class="pi pi-angle-right ml-auto  p-1"></i></div>
+      <hr>
+      <div routerLink="/my-learning" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm">My Learning <i class="pi pi-angle-right ml-auto  p-1"></i></div>
+      <hr>
+      <div routerLink="/profile" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm">Profile <i class="pi pi-angle-right ml-auto  p-1"></i></div>
+      <hr>
+      <div routerLink="/my-account" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm">Account Settings <i class="pi pi-angle-right ml-auto  p-1"></i></div>
+      <hr>
+      <div (click)="logout()" class="flex cursor-pointer items-center gap-2 p-1 bg-slate-50 text-sm"><i class="pi pi-sign-out"></i> Logout </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

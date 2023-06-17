@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpContext } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
@@ -9,6 +9,7 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
+import { Course } from '../models/course';
 
 
 /**
@@ -46,10 +47,7 @@ export class CourseProgressService extends BaseService {
 'chapterId'?: string;
 'chapterItemId'?: string;
 }
-  },
-  context?: HttpContext
-
-): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<void>> {
 
     const rb = new RequestBuilder(this.rootUrl, CourseProgressService.AddCourseProgressPath, 'post');
     if (params) {
@@ -58,8 +56,7 @@ export class CourseProgressService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: '*/*',
-      context: context
+      accept: '*/*'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -73,7 +70,7 @@ export class CourseProgressService extends BaseService {
    *
    * Add Learner Course Progress
    *
-   * This method provides access only to the response body.
+   * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `addCourseProgress$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
@@ -84,12 +81,9 @@ export class CourseProgressService extends BaseService {
 'chapterId'?: string;
 'chapterItemId'?: string;
 }
-  },
-  context?: HttpContext
+  }): Observable<void> {
 
-): Observable<void> {
-
-    return this.addCourseProgress$Response(params,context).pipe(
+    return this.addCourseProgress$Response(params).pipe(
       map((r: StrictHttpResponse<void>) => r.body as void)
     );
   }
@@ -111,10 +105,7 @@ export class CourseProgressService extends BaseService {
    */
   getCourseProgress$Response(params: {
     courseId: string;
-  },
-  context?: HttpContext
-
-): Observable<StrictHttpResponse<{
+  }): Observable<StrictHttpResponse<{
 'learnerId'?: string;
 'courseId'?: string;
 'dateEnrolledInCourse'?: string;
@@ -136,8 +127,7 @@ export class CourseProgressService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'application/json',
-      context: context
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -164,17 +154,14 @@ export class CourseProgressService extends BaseService {
    *
    * Get Learner's Course Progress
    *
-   * This method provides access only to the response body.
+   * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `getCourseProgress$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   getCourseProgress(params: {
     courseId: string;
-  },
-  context?: HttpContext
-
-): Observable<{
+  }): Observable<{
 'learnerId'?: string;
 'courseId'?: string;
 'dateEnrolledInCourse'?: string;
@@ -189,7 +176,7 @@ export class CourseProgressService extends BaseService {
 'status'?: 'enrolled' | 'in progress' | 'completed' | 'certificated';
 }> {
 
-    return this.getCourseProgress$Response(params,context).pipe(
+    return this.getCourseProgress$Response(params).pipe(
       map((r: StrictHttpResponse<{
 'learnerId'?: string;
 'courseId'?: string;
@@ -217,6 +204,60 @@ export class CourseProgressService extends BaseService {
 'statusHistory'?: Array<any>;
 'status'?: 'enrolled' | 'in progress' | 'completed' | 'certificated';
 })
+    );
+  }
+
+  /**
+   * Path part for operation getCoursesByCourseProgress
+   */
+  static readonly GetCoursesByCourseProgressPath = '/courses/{progressStatus}';
+
+  /**
+   * Get Courses By Course Progress.
+   *
+   * Get Courses By Course Progress
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getCoursesByCourseProgress()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getCoursesByCourseProgress$Response(params?: {
+    progressStatus?: 'enrolled' | 'in progress' | 'completed' | 'certificated';
+  }): Observable<StrictHttpResponse<Array<Course>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CourseProgressService.GetCoursesByCourseProgressPath, 'get');
+    if (params) {
+      rb.query('progressStatus', params.progressStatus, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Course>>;
+      })
+    );
+  }
+
+  /**
+   * Get Courses By Course Progress.
+   *
+   * Get Courses By Course Progress
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `getCoursesByCourseProgress$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getCoursesByCourseProgress(params?: {
+    progressStatus?: 'enrolled' | 'in progress' | 'completed' | 'certificated';
+  }): Observable<Array<Course>> {
+
+    return this.getCoursesByCourseProgress$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Course>>) => r.body as Array<Course>)
     );
   }
 
