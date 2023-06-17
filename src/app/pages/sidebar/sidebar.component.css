@@ -10,7 +10,11 @@
   transition: all 850ms ease-in-out;
   background: white;
 }
-
+.fixedImage{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
 
 .sidebar__container{
   width: 95%;
