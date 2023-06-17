@@ -19,6 +19,7 @@
 .card__group{
     display: grid;
     grid-template-columns: 7fr 5fr;
+    gap: 20px;
 }
 
 .cart__left{
@@ -66,7 +67,6 @@ hr{
     font-variation-settings: 'wght' 980;
     color: var(--primary-color);
     width: 100%;
-    position: absolute;
     bottom: 5%;
     text-align: right;
 
