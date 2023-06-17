@@ -10,11 +10,20 @@
           </p>
           <button class="primary__btn" *ngIf="auth.isUserLoggedIn() == false" routerLink="/signup">Signup</button>
           <div class="footer__apps" @listAnimation>
+            <a
+            href="https://mirrorbucket.nyc3.cdn.digitaloceanspaces.com/APK/Mirror.apk
+          "
+            target="_blank"
+            download
+          >
             <img
+              data-aos="fade-down"
+              data-aos-duration="1300"
               src="../../../assets/hero/playstore.png"
               alt=""
               draggable="false"
             />
+          </a>
             <img
               src="../../../assets/hero/appStore.png"
               alt=""
