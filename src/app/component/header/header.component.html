@@ -11,14 +11,12 @@
         <i class="pi pi-list size"></i>
         Category
       </div>
-      <div class="search">
-        <i class="pi pi-search size"></i>
-        <input type="text" placeholder="Search for Course" />
+      <div class="search border-none">
+        <!-- <i class="pi pi-search size"></i> -->
+        <!-- <input type="text" placeholder="Search for Course" /> -->
       </div>
-      v
       <ng-template [ngIf]="auth.isUserLoggedIn() == false">
         <div class="header__right">
-      
           <ul>
             <li routerLink="/courses">Courses</li>
           </ul>
@@ -31,7 +29,6 @@
         </div>
       </ng-template>
       <ng-template [ngIf]="auth.isUserLoggedIn() == true">
-        
         <div class="header__right modified" >
           <ul>
             <li routerLink="/courses">Courses</li>
@@ -46,10 +43,10 @@
             class="cursor"
             shape="circle"
             (click)="openMenu()" 
-            *ngIf="category.profilePic == null; else image"
+            *ngIf="category.user.pictureUrl== null; else image"
           ></p-avatar>
           <ng-template #image>
-            <img class="profile__pic" [src]="category.profilePic" alt=""  (click)="openMenu()" >
+            <img class="profile__pic" [src]="category.user.pictureUrl" alt=""  (click)="openMenu()" >
           </ng-template>
         </div>
       </ng-template>
@@ -64,7 +61,6 @@
        
       </form>
     </div>
-   
     <div class="header__hamburger" (click)="openSidebar()">
       <i class="pi pi-bars size"></i>
     </div>

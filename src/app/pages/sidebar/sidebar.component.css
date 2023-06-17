@@ -8,13 +8,12 @@
   display: flex;
   transform: 0%;
   transition: all 850ms ease-in-out;
-  margin-top: 80px;
   background: white;
 }
 
 
 .sidebar__container{
-  width: 90%;
+  width: 95%;
   height: 100%;
   margin: auto;
   padding: 10px;

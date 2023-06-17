@@ -1,16 +1,42 @@
 <section class="courses" *ngIf="category$ | async as category">
   <app-header></app-header>
+ 
   <ng-template [ngIf]="category.selected == 'young adult'">
     <app-hero-two></app-hero-two>
+    <div class="flex items-center justify-center pb-3 pt-2">
+      <p-selectButton
+        [options]="courseCategories"
+        [(ngModel)]="selectedCategory"
+        (onChange)="changeCategory($event)"
+      >
+        <ng-template let-item>
+          <div class="grouped__data">
+            <p>{{ item | uppercase }}</p>
+          </div>
+        </ng-template>
+      </p-selectButton>
+    </div>
     <div class="main__course pt-5 pb-5">
+      <div class="search mb-3">
+        <i class="pi pi-search"></i>
+        <input
+          class="input_search"
+          pInputText
+          type="text"
+          placeholder="Search keyword"
+          (input)="dt3.filterGlobal($any($event.target).value, 'contains')"
+        />
+      </div>
       <p-table
-        #dt
+        #dt3
         [value]="courses$ | async"
         dataKey="id"
         [loading]="loading"
         [paginator]="true"
         [rowsPerPageOptions]="[10, 25, 50]"
+        [globalFilterFields]="['title', 'instructor']"
         [rows]="10"
+
       >
         <ng-template let-item pTemplate="body" class="grid-3"   >
           <app-course-card [course]="item"></app-course-card>
@@ -22,13 +48,38 @@
 
   <ng-template [ngIf]="category.selected == 'children'">
     <app-course-hero></app-course-hero>
+    <div class="flex items-center justify-center pb-3 pt-2">
+      <p-selectButton
+        [options]="courseCategories"
+        [(ngModel)]="selectedCategory"
+        (onChange)="changeCategory($event)"
+      >
+        <ng-template let-item>
+          <div class="grouped__data">
+            <p>{{ item | uppercase }}</p>
+          </div>
+        </ng-template>
+      </p-selectButton>
+    </div>
     <div class="main__course pt-5 pb-5">
+      <div class="search mb-3">
+        <i class="pi pi-search"></i>
+        <input
+          class="input_search"
+          pInputText
+          type="text"
+          placeholder="Search keyword"
+          
+          (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+        />
+      </div>
       <p-table
-        #dt
+        #dt1
         [value]="courses$ | async"
         dataKey="id"
         [loading]="loading"
         [paginator]="true"
+        [globalFilterFields]="['title', 'instructor']"
         [rowsPerPageOptions]="[10, 25, 50]"
         [rows]="10"
       >
@@ -42,13 +93,37 @@
 
   <ng-template [ngIf]="category.selected == 'adult'">
     <app-hero-two></app-hero-two>
+    <div class="flex items-center justify-center pb-3 pt-2">
+      <p-selectButton
+        [options]="courseCategories"
+        [(ngModel)]="selectedCategory"
+        (onChange)="changeCategory($event)"
+      >
+        <ng-template let-item>
+          <div class="grouped__data">
+            <p>{{ item | uppercase }}</p>
+          </div>
+        </ng-template>
+      </p-selectButton>
+    </div>
     <div class="main__course pt-5 pb-5">
+      <div class="search mb-3">
+        <i class="pi pi-search"></i>
+        <input
+          class="input_search"
+          pInputText
+          type="text"
+          placeholder="Search Course"
+          (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+        />
+      </div>
       <p-table
-        #dt
+        #dt2
         [value]="courses$ | async"
         dataKey="id"
         [loading]="loading"
         [paginator]="true"
+        [globalFilterFields]="['title', 'instructor']"
         [rowsPerPageOptions]="[10, 25, 50]"
         [rows]="10"
       >

@@ -1,8 +1,18 @@
 <div class="sidebar__main">
   <div class="sidebar__container">
-    <div class="image flex items-center pt-5 gap-2"*ngIf="auth.isUserLoggedIn()"  >
+    <div class="sidebar__top flex items-center justify-between w-full pb-3">
+      <div class="logo" routerLink="/home">
+        <img src="/assets/logo/logo.png" alt="" draggable="false" />
+      </div>
+      <i class="pi pi-times p-2 text-lg"></i>
+    </div>
+
+    <div
+      class="image flex items-center pt-2 gap-2"
+      *ngIf="auth.isUserLoggedIn()"
+    >
       <p-avatar
-        [label]="(this.message.user?.name?.split(' ')[0][0]) | uppercase"
+        [label]="this.message.user?.name?.split(' ')[0][0] | uppercase"
         styleClass="mr-2 "
         size="large"
         class="cursor"
@@ -18,26 +28,129 @@
       </ng-template>
 
       <div class="">
-        <p class="font-bold">{{message.user?.name | titlecase}}</p>
-        <small>{{message.user?.email}}</small>
+        <p class="font-bold">{{ message.user?.name | titlecase }}</p>
+        <small>{{ message.user?.email }}</small>
       </div>
     </div>
-    <div class="sidebar__left grid gap-2 pt-3 ">
-      <div routerLink="/home" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"> Home <i class="pi pi-angle-right ml-auto  p-1"></i></div>
-      <hr>
-      <div routerLink="/courses" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm">Courses <i class="pi pi-angle-right ml-auto  p-1"></i></div>
-      <hr>
-      <div *ngIf="category$ | async as category" routerLink="/cart" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 " > <p class=" pr-4 w-fit text-sm" pBadge [value]="category.cart?.length">Cart </p>  <i class="pi pi-angle-right ml-auto  p-1"></i></div>
-      <hr>
-      <div *ngIf="auth.isUserLoggedIn()" routerLink="/notification" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm" > <p class="pr-4 w-fit text-sm" pBadge [value]="totalNote.length"> Notification </p>  <i class="pi pi-angle-right ml-auto  p-1"></i></div>
-      <hr>
-      <div *ngIf="auth.isUserLoggedIn()" routerLink="/my-learning" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm">My Learning <i class="pi pi-angle-right ml-auto  p-1"></i></div>
-      <hr>
-      <div *ngIf="auth.isUserLoggedIn()" routerLink="/profile" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm">Profile <i class="pi pi-angle-right ml-auto  p-1"></i></div>
-      <hr>
-      <div *ngIf="auth.isUserLoggedIn()" routerLink="/my-account" class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm">Account Settings <i class="pi pi-angle-right ml-auto  p-1"></i></div>
-      <hr>
-      <div *ngIf="auth.isUserLoggedIn()" (click)="logout()" class="flex cursor-pointer items-center gap-2 p-1 bg-slate-50 text-sm"><i class="pi pi-sign-out"></i> Logout </div>
+    <div class="sidebar__left grid gap-2 pt-2">
+      <div
+        routerLink="/home"
+        class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"
+      >
+        Home <i class="pi pi-angle-right ml-auto p-1"></i>
+      </div>
+      <hr />
+      <div
+        routerLink="/courses"
+        class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"
+      >
+        Courses <i class="pi pi-angle-right ml-auto p-1"></i>
+      </div>
+      <hr />
+
+      <ng-template [ngIf]="auth.isUserLoggedIn() == true">
+        <div
+          *ngIf="category$ | async as category"
+          routerLink="/cart"
+          class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50"
+        >
+          <p class="pr-4 w-fit text-sm" pBadge [value]="category.cart?.length">
+            Cart
+          </p>
+          <i class="pi pi-angle-right ml-auto p-1"></i>
+        </div>
+        <hr />
+        <div
+          routerLink="/notification"
+          class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"
+        >
+          <p class="pr-4 w-fit text-sm" pBadge [value]="totalNote.length">
+            Notification
+          </p>
+          <i class="pi pi-angle-right ml-auto p-1"></i>
+        </div>
+        <hr />
+        <div
+          routerLink="/my-learning"
+          class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"
+        >
+          My Learning <i class="pi pi-angle-right ml-auto p-1"></i>
+        </div>
+        <hr />
+        <div
+          routerLink="/profile"
+          class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"
+        >
+          Profile <i class="pi pi-angle-right ml-auto p-1"></i>
+        </div>
+        <hr />
+        <div
+          routerLink="/my-account"
+          class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"
+        >
+          Account Settings <i class="pi pi-angle-right ml-auto p-1"></i>
+        </div>
+        <hr />
+        <div
+          (click)="logout()"
+          class="flex cursor-pointer items-center gap-2 p-1 bg-slate-50 text-sm"
+        >
+          <i class="pi pi-sign-out"></i> Logout
+        </div>
+        <form [formGroup]="form">
+          <p-inputSwitch [(ngModel)]="checked" (onChange)="loadTheme($event)">
+            <ng-template pTemplate="body">
+              <div class="flex align-items-center gap-2">
+                <i class="pi pi-moon"></i>
+              </div>
+            </ng-template>
+          </p-inputSwitch>
+        </form>
+      </ng-template>
+      <ng-template [ngIf]="!auth.isUserLoggedIn()">
+        <div class="" *ngIf="category$ | async as category">
+          <div
+            data-aos="fade"
+            [class]="'category__main' + ' ' + category.selected"
+          >
+            <div class="category__container">
+              <div
+                class="cursor-pointer grid grid-cols-2 p-1 bg-slate-50 text-sm"
+              >
+                Select Category
+              </div>
+              <div class="category__sections pl-3">
+                <div
+                  class="cursor-pointer grid grid-cols-2 p-2 text-[12px]"
+                  (click)="setCategory('children')"
+                >
+                  - Children
+                </div>
+                <div
+                  class="cursor-pointer grid grid-cols-2 p-2 text-[12px]"
+                  (click)="setCategory('young adult')"
+                >
+                  - Young Adult
+                </div>
+                <div
+                  class="cursor-pointer grid grid-cols-2 p-2 text-[12px]"
+                  (click)="setCategory('adult')"
+                >
+                  - Adult
+                </div>
+              </div>
+              <div class="images"></div>
+            </div>
+          </div>
+        </div>
+        <button pRipple class="secondary__btn w-full" routerLink="/login">
+          Login
+        </button>
+        <button pRipple class="primary__btn w-full" routerLink="/signup">
+          Sign Up
+        </button>
+      </ng-template>
+    
     </div>
   </div>
 </div>

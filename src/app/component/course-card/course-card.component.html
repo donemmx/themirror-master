@@ -14,9 +14,7 @@
             {{tag}}
         </div>
     </div>
-      <div class="pricing pt-1">{{course?.pricePlan?.price == 0 ? 'Free': course?.pricePlan?.price | currency: course?.pricePlan?.currency :'symbol-narrow'}}</div>
-      <button class="outline__btnBlack full ">View Course</button>
-    </div>
+      <div class="pricing pt-1">{{course?.pricePlan?.price == 0 ? 'Free' : course?.pricePlan?.price | currency: course?.pricePlan?.currency :'symbol-narrow'}}</div>
   </div>
 </div>
 
