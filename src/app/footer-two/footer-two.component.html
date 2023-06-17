@@ -1,16 +1,24 @@
 <footer class="footer">
-    <div class="footer__top">
-      <div class="footer__container">
-        <div class="footer__left">
-          <h3 class="head__three" data-aos="fade-in" data-aos-duration="800">Want To Find Your Pathway To Wholeness?</h3>
-          <p data-aos="fade-in" class="paragraph">
-            Join now to enjoy customize Mentoring & Discipleship Program to
-            maximize your potential, fulfill God-given purpose, and enjoy healthy
-            relationships.
-          </p>
-          <button class="primary__btn" *ngIf="auth.isUserLoggedIn() == false" routerLink="/signup">Signup</button>
-          <div class="footer__apps" @listAnimation>
-            <a
+  <div class="footer__top">
+    <div class="footer__container">
+      <div class="footer__left">
+        <h3 class="head__three" data-aos="fade-in" data-aos-duration="800">
+          Want To Find Your Pathway To Wholeness?
+        </h3>
+        <p data-aos="fade-in" class="paragraph">
+          Join now to enjoy customize Mentoring & Discipleship Program to
+          maximize your potential, fulfill God-given purpose, and enjoy healthy
+          relationships.
+        </p>
+        <button
+          class="primary__btn"
+          *ngIf="auth.isUserLoggedIn() == false"
+          routerLink="/signup"
+        >
+          Signup
+        </button>
+        <div class="footer__apps" @listAnimation>
+          <a
             href="https://mirrorbucket.nyc3.cdn.digitaloceanspaces.com/APK/Mirror.apk
           "
             target="_blank"
@@ -24,17 +32,19 @@
               draggable="false"
             />
           </a>
+          <a href="#">
             <img
+              data-aos="fade-down"
+              data-aos-duration="1450"
               src="../../../assets/hero/appStore.png"
               alt=""
               draggable="false"
             />
-          </div>
-        </div>
-        <div class="footer__right">
+          </a>
         </div>
       </div>
+      <div class="footer__right"></div>
     </div>
-    <app-footer-bottom></app-footer-bottom>
-  </footer>
-  
+  </div>
+  <app-footer-bottom></app-footer-bottom>
+</footer>
