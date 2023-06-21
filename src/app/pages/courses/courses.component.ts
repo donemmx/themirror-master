@@ -16,7 +16,7 @@ export class CoursesComponent extends BaseComponent{
   courses$: Observable<any>
   loading: boolean = true
   courseCategory = new BehaviorSubject('identity');
-  courseCategories = ['identity', 'education', 'spiritual' ]
+  courseCategories = ['identity', 'education', 'social', 'spiritual' ]
   selectedCategory:any  = 'identity'
   constructor(data:DataService, router: Router, private api: CoursesService, private auth: AuthService, private userApi: LearnersService){
     super(data, router)

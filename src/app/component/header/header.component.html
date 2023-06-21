@@ -46,7 +46,9 @@
             *ngIf="category.user.pictureUrl== null; else image"
           ></p-avatar>
           <ng-template #image>
-            <img class="profile__pic" [src]="category.user.pictureUrl" alt=""  (click)="openMenu()" >
+              <div class="profile__pic">
+                <img [src]="category.user.pictureUrl" alt=""  (click)="openMenu()" />
+              </div>
           </ng-template>
         </div>
       </ng-template>
