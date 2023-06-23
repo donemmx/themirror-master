@@ -22,25 +22,25 @@ export class BaseComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscrption = this.data.currentMessage.subscribe(
-      (message) => (this.message = message)
+      (message) => {
+        this.message = message;
+        this.category$ = of(message)
+        if (message == null) {
+          const id: any = this.learnerAuth.getUserId();
+          if(id !== null){
+            this.learnerApi
+              .getLearner({
+                learnerId: id.jti,
+              })
+              .subscribe((data) => {
+                this.message.user = data;
+                this.message.cart = [];
+                this.data.changeMessage(this.message);
+              });
+          }
+          }
+      }
     );
-      this.data.currentMessage.subscribe((res: any) => {
-      this.category$ = of(res);
-      if (res.user == null) {
-        const id: any = this.learnerAuth.getUserId();
-        if(id){
-          this.learnerApi
-            .getLearner({
-              learnerId: id.jti,
-            })
-            .subscribe((data) => {
-              this.message.user = data;
-              this.message.cart = [];
-              this.data.changeMessage(this.message);
-            });
-        }
-        }
-    });
   }
 
   ngOnDestroy(): void {
@@ -117,5 +117,13 @@ export class BaseComponent implements OnInit, OnDestroy {
         chapterItemId: chapterItemId,
       },
     });
+  }
+
+  iosDownload(){
+
+  }
+
+  androidDownload(){
+      window.open("https://mirrorbucket.nyc3.cdn.digitaloceanspaces.com/APK/Mirror.apk", "_blank")
   }
 }
