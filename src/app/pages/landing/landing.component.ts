@@ -12,7 +12,7 @@ ngOnInit(): void {
 }
 
 count(){
-  setInterval(()=> 
+  setTimeout(()=> 
   {
     this.loaded()
   }

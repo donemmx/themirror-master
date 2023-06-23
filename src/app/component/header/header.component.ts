@@ -69,31 +69,8 @@ export class HeaderComponent extends BaseComponent {
 
   loadTheme(theme: any) {
     if (isPlatformBrowser(this.platformId)) {
-      // if(this.message.mode == null){
-      //   this.message.mode = 'darkMode';
-      //   this.data.changeMessage(this.message);
-      //   this.document.body.classList.toggle('darkMode');
-      // }
-
       this.document.body.classList.toggle('darkMode');
-      // else{
-      //   this.data.currentMessage.subscribe((res: any) => {
-      //     });
-      //     if(this.message.mode == 'darkMode'){
-      //       this.message.mode = 'lightMode';
-      //       this.data.changeMessage(this.message);
-      //       console.log('light');
-            
-      //      }
-      //      else{
-      //       this.message.mode = 'darkMode';
-      //       this.data.changeMessage(this.message);
-      //       console.log('dark');
-
-      //      }
-      // }
     }
-    // this.form.value.mode = theme.checked;
   }
 
   getDevice() {

@@ -24,19 +24,23 @@ export class BaseComponent implements OnInit, OnDestroy {
     this.subscrption = this.data.currentMessage.subscribe(
       (message) => (this.message = message)
     );
-    this.data.currentMessage.subscribe((res: any) => {
-      this.category$ = of(res)
-      const id: any = this.learnerAuth.getUserId()
-      if(res.user == null){
-            this.learnerApi.getLearner({
-              learnerId: id.jti
-            }).subscribe((data)=> {
-              this.message.user = data
-              this.message.cart = []
-              this.data.changeMessage(this.message)
+      this.data.currentMessage.subscribe((res: any) => {
+      this.category$ = of(res);
+      if (res.user == null) {
+        const id: any = this.learnerAuth.getUserId();
+        if(id){
+          this.learnerApi
+            .getLearner({
+              learnerId: id.jti,
             })
-          }
-    })
+            .subscribe((data) => {
+              this.message.user = data;
+              this.message.cart = [];
+              this.data.changeMessage(this.message);
+            });
+        }
+        }
+    });
   }
 
   ngOnDestroy(): void {
