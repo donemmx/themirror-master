@@ -22,7 +22,7 @@
         <div class="photo pt-3">
           <h4 data-aos="fade-down" data-aos-duration="2100">Profile Photo</h4>
           <div class="photo__group" data-aos="fade-down" data-aos-duration="2400">
-            <img [src]="message.profilePic" alt="" *ngIf="message.profilePic != null ; else avatar" width="30" height="30">
+            <img [src]="message.user.pictureUrl" alt="" *ngIf="message.user.pictureUrl != null ; else avatar" width="30" height="30">
             <ng-template #avatar>
               <p-avatar
                 [label]="label | uppercase"
