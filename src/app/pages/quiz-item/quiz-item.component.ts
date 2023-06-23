@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ChaptersService, CourseProgressService } from '../api/services';
-import { AuthService } from '../services/auth.service';
-import { NotificationService } from '../services/notification.service';
 import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
-import { BaseComponent } from '../pages/base/base.component';
-import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
+import { BaseComponent } from '../base/base.component';
+import { DataService } from 'src/app/services/data.service';
+import { ChaptersService, CourseProgressService } from 'src/app/api/services';
+import { NotificationService } from 'src/app/services/notification.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-quiz-item',
