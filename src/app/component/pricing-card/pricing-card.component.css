@@ -36,7 +36,7 @@
     content: '';
     background-size: contain;
     position: absolute;
-    background-image: url(../../../assets/images/play.png);
+    background-image: url(../../../assets/images/play.webp);
     width: 100px;
     height: 100px;
     top: 50%;
