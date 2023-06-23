@@ -38,9 +38,6 @@
     rgba(249, 251, 255, 0.4) 0%,
     rgba(249, 251, 255, 0) 100%
   );
-  --hero-bg: url("./assets/images/hero-light.png");
-  --login-bg: url("./assets/images/login-bg.png");
-  --welcome-bg: url("./assets/images/dark-pattern.svg");
   --background: #fefefe;
   --border: 1.2043px solid #fbaf1b;
   --text: rgb(20, 20, 20);
@@ -65,11 +62,9 @@
   --text-dark: rgb(219, 219, 219);
   --card-white-dark: rgb(48, 48, 53);
   --section-bg-black: #ffffff0e;
-  --hero-bg-dark: url("./assets/images/hero-dark.png");
   --login-bg-dark: var(--background-dark);
   --input-dark: var(--background-dark-bg);
   --accent-secondary-dark: var(--background-dark);
-  --welcome-bg-dark: url("./assets/images/light-pattern.svg");
   --carousel-bg-dark: var(--background-dark);
   --primary-btn-dark: none;
   --outline-text-dark: var(--background-dark);
@@ -128,7 +123,7 @@
 
  
   
-  [color-scheme="light"] {
+  [color-scheme="light"] 
     --background: var(--background-light);
     --primary-color: var(--primary-color-light);
     --secondary-color: var(--secondary-color-light);

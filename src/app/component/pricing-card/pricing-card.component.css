@@ -18,7 +18,6 @@
     color: var(--blue);
 }
 .pricing__top{
-    background: url('../../../assets/images/pricing-bg.png');
     height: 25vh;
     background-size: cover;
     background-position: center;
