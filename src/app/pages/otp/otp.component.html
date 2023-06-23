@@ -30,7 +30,7 @@
       
         <div class="loginForm__footer">
           <div [class]="timerOn ? 'hidden' : 'loginForm__info mb-2'" >
-            <p>Haven't received the code?  <a class="cursor-pointer" (click)="resendOTP()">Re-Send Code</a></p>
+            <p>Haven't received the code?  <a  aria-label="resend otp" class="cursor-pointer" (click)="resendOTP()">Re-Send Code</a></p>
           </div>
           <div class="join" routerLink="/signup">Don't have an account? <span>Sign up</span></div>
         </div>

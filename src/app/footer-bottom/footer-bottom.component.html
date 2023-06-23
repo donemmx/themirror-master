@@ -1,10 +1,10 @@
 <div *ngIf="category$ | async as category" [class]="'footer__bottom' + ' ' + category.selected">  
         <div class="footer__body">
           <div [class]="'footer__links' + ' ' + category.selected">
-              <a routerLink="/privacy-policy">Privacy Policy</a>
-              <a>Terms of Use</a>
-              <a>Contact Us</a>
-              <a>Refund Policy</a>
+              <a  aria-label="privacy policy" routerLink="/privacy-policy">Privacy Policy</a>
+              <a  aria-label="terms and condition">Terms of Use</a>
+              <a  aria-label="contact us">Contact Us</a>
+              <a  aria-label="refund policy">Refund Policy</a>
             </div>
             <div class="footer__copyright">The Mirror {{year}}</div>
         </div>

@@ -3,7 +3,7 @@ footer{
 }
 
 .footer__top{
-    background: url(../../assets/footer/footer-bg.jpg);
+    background: url(../../assets/footer/footer-bg.webp);
     background-size: cover;
     height: 100%;
 }

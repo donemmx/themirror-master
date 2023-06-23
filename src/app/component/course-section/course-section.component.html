@@ -2,7 +2,7 @@
   <section class="section__container">
     <div class="section__header">
       <h3 class=" font-bold">Recommended Courses</h3>
-      <a routerLink="" class="small" routerLink="/courses">View All</a>
+      <a aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
     </div>
     <div class="course__section md:grid md:grid-cols-2" @listAnimation>
       <div class="grouped__loading" *ngIf="loading" >
@@ -24,7 +24,7 @@
       <section class="section__container pt-4" *ngIf="category === 'spiritual'">
         <div class="section__header">
           <h3 class=" font-bold"> Spiritual </h3>
-          <a routerLink="" class="small" routerLink="/courses">View All</a>
+          <a  aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
         </div>
         <div class="course__section md:grid md:grid-cols-2" @listAnimation>
           <div class="grouped__loading" *ngIf="loading" >
@@ -43,7 +43,7 @@
       <section class="section__container pt-4"  *ngIf="category === 'education'" >
         <div class="section__header">
           <h3 class=" font-bold"> Education </h3>
-          <a routerLink="" class="small" routerLink="/courses">View All</a>
+          <a  aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
         </div>
         <div class="course__section md:grid md:grid-cols-2" @listAnimation>
           <div class="grouped__loading" *ngIf="loading" >
@@ -62,7 +62,7 @@
       <section class="section__container pt-4"  *ngIf="category === 'identity'">
         <div class="section__header">
           <h3 class=" font-bold"> Identity </h3>
-          <a routerLink="" class="small" routerLink="/courses">View All</a>
+          <a  aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
         </div>
         <div class="course__section md:grid md:grid-cols-2" @listAnimation>
           <div class="grouped__loading" *ngIf="loading" >
@@ -83,7 +83,7 @@
       <section class="section__container pt-4" >
         <div class="section__header">
           <h3 class=" font-bold"> All Courses </h3>
-          <a routerLink="" class="small" routerLink="/courses">View All</a>
+          <a  aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
         </div>
         <div class="course__section md:grid md:grid-cols-2" @listAnimation>
           <div class="grouped__loading" *ngIf="loading" >
@@ -106,7 +106,7 @@
     <section class="section__container pt-4">
       <div class="section__header">
         <h3 class=" font-bold"> Identity </h3>
-        <a routerLink="" class="small" routerLink="/courses">View All</a>
+        <a  aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
       </div>
       <div class="course__section md:grid md:grid-cols-2" @listAnimation>
           <div class="course__container" *ngFor="let course of (identity$ | async)">
@@ -117,7 +117,7 @@
     <section class="section__container pt-4"  >
       <div class="section__header">
         <h3 class=" font-bold"> Education </h3>
-        <a routerLink="" class="small" routerLink="/courses">View All</a>
+        <a  aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
       </div>
       <div class="course__section md:grid md:grid-cols-2" @listAnimation>
           <div class="course__container" *ngFor="let course of (education$ | async)">
@@ -128,7 +128,7 @@
     <section class="section__container pt-4">
       <div class="section__header">
         <h3 class=" font-bold"> Spiritual </h3>
-        <a routerLink="" class="small" routerLink="/courses">View All</a>
+        <a  aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
       </div>
       <div class="course__section md:grid md:grid-cols-2" @listAnimation>
           <div class="course__container" *ngFor="let course of (spiritual$ | async)">

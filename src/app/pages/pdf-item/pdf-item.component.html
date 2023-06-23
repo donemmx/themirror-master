@@ -2,7 +2,7 @@
     <div class="desc pb-2">
       {{item.description}}
     </div>
-    <a href={{item.pdfUploadUrl}} class="primary__btn download mt-3" download>Download Document</a>
+    <a  aria-label="upload pdf" href={{item.pdfUploadUrl}} class="primary__btn download mt-3" download>Download Document</a>
     <div class="absolute z-50 top-[1rem] right-4">
       <button class="primary__btn" (click)="continue()">Done</button>
     </div>
