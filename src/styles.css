@@ -21,7 +21,7 @@
 @font-face {
   font-family: 'jakarta';
   src: url(./assets/font/PlusJakartaSans-VariableFont_wght.ttf);
-
+  font-display: swap;
 }
 
 .bg__course {
