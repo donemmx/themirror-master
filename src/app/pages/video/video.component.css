@@ -132,3 +132,11 @@ overflow: hidden;
   background: rgba(255, 255, 255, 0.14);
   border-radius: 5px;
 }
+
+@media screen and (max-width: 650px) {
+    .video__main{
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+}

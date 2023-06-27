@@ -3,16 +3,19 @@
   height: 70vh;
   display: flex;
   flex-direction: column;
-  background: antiquewhite;
+  background: url('../../assets/images/hero-bg.webp');
   overflow-y: scroll;
+  background-size: cover;
 }
 
 
 .title{
-  font-size: clamp(1.7rem, 2.5vw, 3rem);
+  font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: 20px;
 }
+
+
 
 .desc {
   font-size: clamp(.85rem, 2.5vw, 1rem);

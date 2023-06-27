@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-text-item',
@@ -7,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class TextItemComponent {
 @Input() item: any
+html: any
+safehtmlStr: SafeHtml;
+constructor( public dom: DomSanitizer ){
+  this.safehtmlStr = dom.bypassSecurityTrustHtml(this.html);
+
+}
 }

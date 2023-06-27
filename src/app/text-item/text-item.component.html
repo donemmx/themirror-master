@@ -2,7 +2,6 @@
   <div class="title">
     {{item.title}}
   </div>
-  <div class="desc">
-    {{item.content}}
+  <div [innerHTML]="item.content" class="desc">
   </div>
 </div>

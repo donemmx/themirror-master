@@ -14,11 +14,10 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
-import { LearnersService } from 'src/app/api/services';
+import { LearnersService, NotificationService } from 'src/app/api/services';
 import { BaseComponent } from 'src/app/pages/base/base.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
-import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -42,12 +41,15 @@ export class HeaderComponent extends BaseComponent {
   subscrption: any;
   gender: any = ['male', 'female'];
   label: any
+  totalNote: any = '';
+
   constructor(
     data: DataService,
     router: Router,
     public auth: AuthService,
-    private notify: NotificationService,
     private api: LearnersService,
+    private noteApi: NotificationService,
+    
     @Inject(PLATFORM_ID) platformId: Object,
     @Inject(DOCUMENT) private document: Document,
     private formBuilder: FormBuilder
@@ -60,6 +62,10 @@ export class HeaderComponent extends BaseComponent {
 
     this.form = this.formBuilder.group({
       mode: new FormControl(false),
+    });
+
+    this.noteApi.getAllNotifications().subscribe((res: any) => {
+      this.totalNote = res.data.filter((res: any) => res.isSeen == false);
     });
 
     this.getDevice();

@@ -35,7 +35,7 @@
           </ul>
           <li routerLink="/my-learning">My Learning</li>
           <i class="pi pi-shopping-cart header__icon" style="font-size: 1.2rem" pBadge [value]="category.cart?.length" (click)="openCart()"></i>
-          <i class="pi pi-bell header__icon" style="font-size: 1.2rem"  (click)="openNotification()"></i>
+          <i class="pi pi-bell header__icon" style="font-size: 1.2rem"  pBadge [value]="totalNote.length"  (click)="openNotification()"></i>
           <p-avatar
             [label]="label | uppercase "
             styleClass="mr-2 "

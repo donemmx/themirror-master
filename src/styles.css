@@ -24,6 +24,15 @@
   font-display: swap;
 }
 
+h1, h2, h3, h4 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+
 .bg__course {
   background:  url('./assets/children/courses-kid-bg.webp') !important;
   background-size: cover !important;
