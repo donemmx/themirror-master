@@ -448,6 +448,60 @@ export class LearnersService extends BaseService {
   }
 
   /**
+   * Path part for operation activateMembership
+   */
+  static readonly ActivateMembershipPath = '/learner/{learnerId}/activate-membership';
+
+  /**
+   * Activate Membership.
+   *
+   * Activate Membership
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `activateMembership()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  activateMembership$Response(params: {
+    learnerId: string;
+  }): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, LearnersService.ActivateMembershipPath, 'patch');
+    if (params) {
+      rb.path('learnerId', params.learnerId, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * Activate Membership.
+   *
+   * Activate Membership
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `activateMembership$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  activateMembership(params: {
+    learnerId: string;
+  }): Observable<void> {
+
+    return this.activateMembership$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
    * Path part for operation logInLearner
    */
   static readonly LogInLearnerPath = '/learner-login';
@@ -614,6 +668,122 @@ export class LearnersService extends BaseService {
   }): Observable<AuthToken> {
 
     return this.validateOtp$Response(params).pipe(
+      map((r: StrictHttpResponse<AuthToken>) => r.body as AuthToken)
+    );
+  }
+
+  /**
+   * Path part for operation biometricPasswordLogin
+   */
+  static readonly BiometricPasswordLoginPath = '/user/biometric-login';
+
+  /**
+   * Biometric Password Login.
+   *
+   * Biometric Password Login
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `biometricPasswordLogin()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  biometricPasswordLogin$Response(params?: {
+    body?: {
+'email': string;
+}
+  }): Observable<StrictHttpResponse<AuthToken>> {
+
+    const rb = new RequestBuilder(this.rootUrl, LearnersService.BiometricPasswordLoginPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<AuthToken>;
+      })
+    );
+  }
+
+  /**
+   * Biometric Password Login.
+   *
+   * Biometric Password Login
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `biometricPasswordLogin$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  biometricPasswordLogin(params?: {
+    body?: {
+'email': string;
+}
+  }): Observable<AuthToken> {
+
+    return this.biometricPasswordLogin$Response(params).pipe(
+      map((r: StrictHttpResponse<AuthToken>) => r.body as AuthToken)
+    );
+  }
+
+  /**
+   * Path part for operation setBiometricPassword
+   */
+  static readonly SetBiometricPasswordPath = '/user/biometric-login';
+
+  /**
+   * Set Biometric.
+   *
+   * Set Biometric Password Login
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `setBiometricPassword()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  setBiometricPassword$Response(params?: {
+    body?: {
+'password'?: string;
+}
+  }): Observable<StrictHttpResponse<AuthToken>> {
+
+    const rb = new RequestBuilder(this.rootUrl, LearnersService.SetBiometricPasswordPath, 'patch');
+    if (params) {
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<AuthToken>;
+      })
+    );
+  }
+
+  /**
+   * Set Biometric.
+   *
+   * Set Biometric Password Login
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `setBiometricPassword$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  setBiometricPassword(params?: {
+    body?: {
+'password'?: string;
+}
+  }): Observable<AuthToken> {
+
+    return this.setBiometricPassword$Response(params).pipe(
       map((r: StrictHttpResponse<AuthToken>) => r.body as AuthToken)
     );
   }

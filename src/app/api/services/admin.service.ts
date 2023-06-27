@@ -589,6 +589,122 @@ export class AdminService extends BaseService {
   }
 
   /**
+   * Path part for operation biometricPasswordLogin
+   */
+  static readonly BiometricPasswordLoginPath = '/user/biometric-login';
+
+  /**
+   * Biometric Password Login.
+   *
+   * Biometric Password Login
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `biometricPasswordLogin()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  biometricPasswordLogin$Response(params?: {
+    body?: {
+'email': string;
+}
+  }): Observable<StrictHttpResponse<AuthToken>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AdminService.BiometricPasswordLoginPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<AuthToken>;
+      })
+    );
+  }
+
+  /**
+   * Biometric Password Login.
+   *
+   * Biometric Password Login
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `biometricPasswordLogin$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  biometricPasswordLogin(params?: {
+    body?: {
+'email': string;
+}
+  }): Observable<AuthToken> {
+
+    return this.biometricPasswordLogin$Response(params).pipe(
+      map((r: StrictHttpResponse<AuthToken>) => r.body as AuthToken)
+    );
+  }
+
+  /**
+   * Path part for operation setBiometricPassword
+   */
+  static readonly SetBiometricPasswordPath = '/user/biometric-login';
+
+  /**
+   * Set Biometric.
+   *
+   * Set Biometric Password Login
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `setBiometricPassword()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  setBiometricPassword$Response(params?: {
+    body?: {
+'password'?: string;
+}
+  }): Observable<StrictHttpResponse<AuthToken>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AdminService.SetBiometricPasswordPath, 'patch');
+    if (params) {
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<AuthToken>;
+      })
+    );
+  }
+
+  /**
+   * Set Biometric.
+   *
+   * Set Biometric Password Login
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `setBiometricPassword$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  setBiometricPassword(params?: {
+    body?: {
+'password'?: string;
+}
+  }): Observable<AuthToken> {
+
+    return this.setBiometricPassword$Response(params).pipe(
+      map((r: StrictHttpResponse<AuthToken>) => r.body as AuthToken)
+    );
+  }
+
+  /**
    * Path part for operation generateOtp
    */
   static readonly GenerateOtpPath = '/user/otp/generate';

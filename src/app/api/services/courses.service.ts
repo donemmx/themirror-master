@@ -309,6 +309,242 @@ export class CoursesService extends BaseService {
   }
 
   /**
+   * Path part for operation addCoursesToCoursePackage
+   */
+  static readonly AddCoursesToCoursePackagePath = '/course-package/{coursePackageId}';
+
+  /**
+   * Add Courses to Course Package.
+   *
+   * Add Courses to Course Package
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `addCoursesToCoursePackage()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  addCoursesToCoursePackage$Response(params: {
+    courseId: string;
+    body?: {
+'courseIds'?: Array<any>;
+}
+  }): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CoursesService.AddCoursesToCoursePackagePath, 'patch');
+    if (params) {
+      rb.path('courseId', params.courseId, {});
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * Add Courses to Course Package.
+   *
+   * Add Courses to Course Package
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `addCoursesToCoursePackage$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  addCoursesToCoursePackage(params: {
+    courseId: string;
+    body?: {
+'courseIds'?: Array<any>;
+}
+  }): Observable<void> {
+
+    return this.addCoursesToCoursePackage$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
+   * Path part for operation uploadCoursePackageCover
+   */
+  static readonly UploadCoursePackageCoverPath = '/course-package/{coursePackageId}/add-course-cover';
+
+  /**
+   * Upload Course Package Cover.
+   *
+   * Upload Course Package Cover
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `uploadCoursePackageCover()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  uploadCoursePackageCover$Response(params: {
+    courseId: string;
+    body?: Upload
+  }): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CoursesService.UploadCoursePackageCoverPath, 'patch');
+    if (params) {
+      rb.path('courseId', params.courseId, {});
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * Upload Course Package Cover.
+   *
+   * Upload Course Package Cover
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `uploadCoursePackageCover$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  uploadCoursePackageCover(params: {
+    courseId: string;
+    body?: Upload
+  }): Observable<void> {
+
+    return this.uploadCoursePackageCover$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
+   * Path part for operation createPackagePricePlan
+   */
+  static readonly CreatePackagePricePlanPath = '/pricing-plan/course-package/{coursePackageId}';
+
+  /**
+   * Create Package Price Plan.
+   *
+   * Create Package Pricing Plan
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `createPackagePricePlan()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  createPackagePricePlan$Response(params: {
+    courseId: string;
+    body?: PricePlan
+  }): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CoursesService.CreatePackagePricePlanPath, 'post');
+    if (params) {
+      rb.path('courseId', params.courseId, {});
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * Create Package Price Plan.
+   *
+   * Create Package Pricing Plan
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `createPackagePricePlan$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  createPackagePricePlan(params: {
+    courseId: string;
+    body?: PricePlan
+  }): Observable<void> {
+
+    return this.createPackagePricePlan$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
+   * Path part for operation addCoursesToCoursePackage_1
+   */
+  static readonly AddCoursesToCoursePackage_1Path = '/pricing-plan/course-package/{coursePackageId}';
+
+  /**
+   * Add Courses to Course Package.
+   *
+   * Add Courses to Course Package
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `addCoursesToCoursePackage_1()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  addCoursesToCoursePackage_1$Response(params: {
+    courseId: string;
+    body?: {
+'courseIds'?: Array<any>;
+}
+  }): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CoursesService.AddCoursesToCoursePackage_1Path, 'patch');
+    if (params) {
+      rb.path('courseId', params.courseId, {});
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * Add Courses to Course Package.
+   *
+   * Add Courses to Course Package
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `addCoursesToCoursePackage_1$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  addCoursesToCoursePackage_1(params: {
+    courseId: string;
+    body?: {
+'courseIds'?: Array<any>;
+}
+  }): Observable<void> {
+
+    return this.addCoursesToCoursePackage_1$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
    * Path part for operation getAllCourses
    */
   static readonly GetAllCoursesPath = '/courses';
@@ -325,7 +561,7 @@ export class CoursesService extends BaseService {
    */
   getAllCourses$Response(params?: {
     isPublished?: true | false;
-    courseCategory?: 'identity' | 'education' | 'spiritual';
+    courseCategory?: 'identity' | 'education' | 'spiritual' | 'social' | 'mentoring';
     ageCategory?: 'children' | 'young adult' | 'adult';
     title?: string;
   }): Observable<StrictHttpResponse<{
@@ -367,7 +603,7 @@ export class CoursesService extends BaseService {
    */
   getAllCourses(params?: {
     isPublished?: true | false;
-    courseCategory?: 'identity' | 'education' | 'spiritual';
+    courseCategory?: 'identity' | 'education' | 'spiritual' | 'social' | 'mentoring';
     ageCategory?: 'children' | 'young adult' | 'adult';
     title?: string;
   }): Observable<{
@@ -382,6 +618,81 @@ export class CoursesService extends BaseService {
 }>) => r.body as {
 'totalRecords'?: number;
 'data'?: Array<Course>;
+})
+    );
+  }
+
+  /**
+   * Path part for operation getAllCoursePackages
+   */
+  static readonly GetAllCoursePackagesPath = '/course-packages';
+
+  /**
+   * Get All Course Packages.
+   *
+   * Get All Course Packages
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllCoursePackages()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllCoursePackages$Response(params?: {
+    courseCategory?: 'identity' | 'education' | 'spiritual' | 'social' | 'mentoring';
+    ageCategory?: 'children' | 'young adult' | 'adult';
+    title?: string;
+  }): Observable<StrictHttpResponse<{
+'totalRecords'?: number;
+'data'?: Array<CoursePackage>;
+}>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CoursesService.GetAllCoursePackagesPath, 'get');
+    if (params) {
+      rb.query('courseCategory', params.courseCategory, {});
+      rb.query('ageCategory', params.ageCategory, {});
+      rb.query('title', params.title, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<{
+        'totalRecords'?: number;
+        'data'?: Array<CoursePackage>;
+        }>;
+      })
+    );
+  }
+
+  /**
+   * Get All Course Packages.
+   *
+   * Get All Course Packages
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `getAllCoursePackages$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllCoursePackages(params?: {
+    courseCategory?: 'identity' | 'education' | 'spiritual' | 'social' | 'mentoring';
+    ageCategory?: 'children' | 'young adult' | 'adult';
+    title?: string;
+  }): Observable<{
+'totalRecords'?: number;
+'data'?: Array<CoursePackage>;
+}> {
+
+    return this.getAllCoursePackages$Response(params).pipe(
+      map((r: StrictHttpResponse<{
+'totalRecords'?: number;
+'data'?: Array<CoursePackage>;
+}>) => r.body as {
+'totalRecords'?: number;
+'data'?: Array<CoursePackage>;
 })
     );
   }
@@ -1344,6 +1655,60 @@ export class CoursesService extends BaseService {
 
     return this.getAssessments$Response(params).pipe(
       map((r: StrictHttpResponse<Array<SubmittedAssignment>>) => r.body as Array<SubmittedAssignment>)
+    );
+  }
+
+  /**
+   * Path part for operation getAllCoursesWithoutForum
+   */
+  static readonly GetAllCoursesWithoutForumPath = '/courses/forums';
+
+  /**
+   * Get All Courses Without Forum.
+   *
+   * Get All Courses Without Forum
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllCoursesWithoutForum()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllCoursesWithoutForum$Response(params: {
+    forumId: string;
+  }): Observable<StrictHttpResponse<Array<Course>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CoursesService.GetAllCoursesWithoutForumPath, 'get');
+    if (params) {
+      rb.path('forumId', params.forumId, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Course>>;
+      })
+    );
+  }
+
+  /**
+   * Get All Courses Without Forum.
+   *
+   * Get All Courses Without Forum
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `getAllCoursesWithoutForum$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllCoursesWithoutForum(params: {
+    forumId: string;
+  }): Observable<Array<Course>> {
+
+    return this.getAllCoursesWithoutForum$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Course>>) => r.body as Array<Course>)
     );
   }
 

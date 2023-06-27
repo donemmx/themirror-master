@@ -46,8 +46,8 @@ export class PaymentService extends BaseService {
     payId: string;
     body?: {
 'courseIds': Array<any>;
-'method'?: 'free' | 'paystack' | 'paypal' | 'token';
-'token'?: string;
+'method'?: 'free' | 'paystack' | 'paypal' | 'member';
+'amount'?: number;
 }
   }): Observable<StrictHttpResponse<{
 'amount'?: number;
@@ -98,8 +98,8 @@ export class PaymentService extends BaseService {
     payId: string;
     body?: {
 'courseIds': Array<any>;
-'method'?: 'free' | 'paystack' | 'paypal' | 'token';
-'token'?: string;
+'method'?: 'free' | 'paystack' | 'paypal' | 'member';
+'amount'?: number;
 }
   }): Observable<{
 'amount'?: number;
@@ -420,6 +420,7 @@ export class PaymentService extends BaseService {
   createPaymentToken$Response(params?: {
     body?: {
 'numberOfUse'?: number;
+'amountWorth'?: number;
 }
   }): Observable<StrictHttpResponse<PaymentToken>> {
 
@@ -452,11 +453,82 @@ export class PaymentService extends BaseService {
   createPaymentToken(params?: {
     body?: {
 'numberOfUse'?: number;
+'amountWorth'?: number;
 }
   }): Observable<PaymentToken> {
 
     return this.createPaymentToken$Response(params).pipe(
       map((r: StrictHttpResponse<PaymentToken>) => r.body as PaymentToken)
+    );
+  }
+
+  /**
+   * Path part for operation applyPaymentToken
+   */
+  static readonly ApplyPaymentTokenPath = '/token';
+
+  /**
+   * Apply Payment Token.
+   *
+   * Apply Payment Token
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `applyPaymentToken()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  applyPaymentToken$Response(params?: {
+    body?: {
+'tokenItem'?: 'course' | 'package';
+'itemIds'?: Array<any>;
+}
+  }): Observable<StrictHttpResponse<{
+'amountLeft'?: number;
+}>> {
+
+    const rb = new RequestBuilder(this.rootUrl, PaymentService.ApplyPaymentTokenPath, 'patch');
+    if (params) {
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<{
+        'amountLeft'?: number;
+        }>;
+      })
+    );
+  }
+
+  /**
+   * Apply Payment Token.
+   *
+   * Apply Payment Token
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `applyPaymentToken$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  applyPaymentToken(params?: {
+    body?: {
+'tokenItem'?: 'course' | 'package';
+'itemIds'?: Array<any>;
+}
+  }): Observable<{
+'amountLeft'?: number;
+}> {
+
+    return this.applyPaymentToken$Response(params).pipe(
+      map((r: StrictHttpResponse<{
+'amountLeft'?: number;
+}>) => r.body as {
+'amountLeft'?: number;
+})
     );
   }
 
