@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { BaseComponent } from '../base/base.component';
@@ -15,11 +15,12 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class SidebarComponent extends BaseComponent {
   totalNote: any = '';
   platformId: Object;
-  checked: boolean = false
-  label: any
+  checked: boolean = false;
+  label: any;
   form: FormGroup;
-
-  cartAmount: any
+  @Input() visible: boolean;
+  @Output() modal = new EventEmitter()
+  cartAmount: any;
   constructor(
     data: DataService,
     router: Router,
@@ -36,17 +37,15 @@ export class SidebarComponent extends BaseComponent {
 
   ngOnInit(): void {
     super.ngOnInit();
-    this.cartAmount = this.message.cart?.length
-    this.label = this.message.user?.name.split(' ')[0][0] 
+    this.cartAmount = this.message.cart?.length;
+    this.label = this.message.user?.name.split(' ')[0][0];
     this.noteApi.getAllNotifications().subscribe((res: any) => {
       this.totalNote = res.data.filter((res: any) => res.isSeen == false);
     });
 
-
     this.form = this.formBuilder.group({
       mode: new FormControl(false),
     });
-
   }
 
   logout() {
@@ -60,13 +59,17 @@ export class SidebarComponent extends BaseComponent {
   loadTheme(theme: any) {
     if (isPlatformBrowser(this.platformId)) {
       this.document.body.classList.toggle('darkMode');
+    }
   }
-}
-
 
   setCategory(item: string) {
     this.message.selected = item;
     this.data.changeMessage(this.message);
     this.router.navigateByUrl('/home');
+  }
+
+  closeModal(){
+    this.visible = false
+    this.modal.emit(this.visible)
   }
 }

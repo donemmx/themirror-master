@@ -83,8 +83,8 @@
 </div>
 </nav>
 
-<div class="mobile__sidebar" *ngIf="visible">
-  <app-sidebar></app-sidebar>
+<div class="mobile__sidebar">
+  <app-sidebar [visible]="visible" (modal)="getModalValue($event)"></app-sidebar>
 </div>
 
 <app-menu [hide]="menu"></app-menu>

@@ -14,6 +14,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
+import { of } from 'rxjs';
 import { LearnersService, NotificationService } from 'src/app/api/services';
 import { BaseComponent } from 'src/app/pages/base/base.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -36,7 +37,7 @@ export class HeaderComponent extends BaseComponent {
   menu: boolean = false;
   cart: boolean = false;
   notification: boolean = false;
-  categoryOpen: boolean = false;
+  categoryOpen = false;
   loading: boolean = false;
   subscrption: any;
   gender: any = ['male', 'female'];
@@ -60,6 +61,20 @@ export class HeaderComponent extends BaseComponent {
   ngOnInit(): void {
     super.ngOnInit();
 
+    if (this.message?.user == null) {
+      const id: any = this.learnerAuth.getUserId();
+      if(id !== null){
+        this.learnerApi
+          .getLearner({
+            learnerId: id.jti,
+          })
+          .subscribe((data) => {
+            this.message.user = data;
+            this.message.cart = [];
+            this.data.changeMessage(this.message);
+          });
+      }
+      }
     this.form = this.formBuilder.group({
       mode: new FormControl(false),
     });
@@ -116,5 +131,9 @@ export class HeaderComponent extends BaseComponent {
     this.data.changeMessage(this.message);
     this.router.navigateByUrl('/home');
     this.openCategory();
+  }
+
+  getModalValue(event: any){
+      this.visible = event
   }
 }

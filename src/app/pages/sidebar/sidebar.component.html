@@ -1,10 +1,10 @@
-<div class="sidebar__main">
+<div class="sidebar__main" *ngIf="visible">
   <div class="sidebar__container">
     <div class="sidebar__top flex items-center justify-between w-full pb-3">
       <div class="logo" routerLink="/home">
         <img src="/assets/logo/logo.webp" alt="" draggable="false" />
       </div>
-      <i class="pi pi-times p-2 text-lg"></i>
+      <i class="pi pi-times p-2 text-lg" (click)="closeModal()"></i>
     </div>
 
     <div
