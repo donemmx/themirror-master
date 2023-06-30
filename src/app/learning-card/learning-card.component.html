@@ -1,6 +1,7 @@
 <div class="learning__main">
-    <div class="learning__left">
-       <app-course-bg [course]="course"></app-course-bg>
+    <div class="learning__left ">
+        <div class="course__img" [ngStyle]="{'background-image': 'url(' + course.courseCoverUrl + ')'}">
+        </div>
     </div>
     <div class="learning__right mt-2">
         <div class="myTag"  >
@@ -8,17 +9,18 @@
                 {{tag}}
             </div>
         </div>
-            <h6 class="bold mt-1">
+            <h6 class=" text-[0.73rem] md:text-[0.75rem] font-black text-black mt-1">
                 {{course.title}}
             </h6>
             <div class="progress mt-2">
-                <div class="progress__left">
+                <!-- <div class="progress__left">
                     progress:
                     <p-progressBar [value]="0" [showValue]="false"></p-progressBar>
-                </div>
+                </div> -->
                 <div class="progress__right">
-                    <button pRipple class="primary__btn" (click)="proceedtToCourse()">{{course.duration ==0 ? 'Start Course' :'Resume Course'}}</button>
+                    <button pRipple class=" text-[11px] bg-slate-600 w-full  text-white p-2 rounded" (click)="proceedtToCourse()">{{course.duration ==0 ? 'Start Course' :'Resume Course'}}</button>
                 </div>
             </div>
     </div>
 </div>
+<!-- bg-[#3c3cc8] -->

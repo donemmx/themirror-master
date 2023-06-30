@@ -1,44 +1,39 @@
 <app-header></app-header>
-<div class="mylearning__top">
-  <div class="group__text">
-    <div data-aos="fade-down" data-aos-duration="1700" class="head__three">
-      Welcome Back!
-    </div>
-    <h1 data-aos="fade-down" data-aos-duration="800" class="head__one">
-      {{ message.user.name | titlecase }}
-    </h1>
-    <div class="text pt-3" data-aos="fade-in" data-aos-duration="1500">
-      <i class="pi pi-play"></i>
-      <p>Continue your Learning Path</p>
+  <div class="mylearning__top">
+    <div class="group__text">
+      <div data-aos="fade-down" data-aos-duration="1700" class="head__three">
+        Welcome Back!
+      </div>
+      <h1 data-aos="fade-down" data-aos-duration="800" class="head__one">
+        {{ message.user.name | titlecase }}
+      </h1>
+      <div class="pt-3 relative" data-aos="fade-in" data-aos-duration="1500">
+        <div
+          class="absolute top-[25vh] text-white text-lg text-center left-[8vw] w-[32%]"
+        >
+          My Journey to
+          <div class="font-black text-xl">Wholeness</div>
+        </div>
+        <p-chart type="doughnut" [data]="data" [options]="options"></p-chart>
+      </div>
     </div>
   </div>
-  <div class="chart">
-    <div class="title">
-      My Journey to Wholeness
-    </div>
-
-  </div>
-</div>
-<div class="myLearning__body">
-
+  <div class="mx-auto w-[95%] md:w-[80%] ">
     <p-tabView>
       <p-tabPanel header="Home">
         <h3 class="head__three color__sec mt-3">My Paid Courses</h3>
 
-        <div class="tab__body mt-2">
-          <div class="courses" *ngFor="let course of myCourses$| async">
+        <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-2">
+          <div class="" *ngFor="let course of myCourses$ | async">
             <app-learning-card [course]="course"></app-learning-card>
           </div>
         </div>
         <app-recommended></app-recommended>
       </p-tabPanel>
-      <p-tabPanel header="In Progress">
-
-      </p-tabPanel>
+      <p-tabPanel header="In Progress"> </p-tabPanel>
       <p-tabPanel header="Completed">
-        <div class="tab__body">
-        </div>
+        <div class="tab__body"></div>
       </p-tabPanel>
     </p-tabView>
-</div>
+  </div>
 <app-footer></app-footer>

@@ -43,6 +43,7 @@ export class HeaderComponent extends BaseComponent {
   gender: any = ['male', 'female'];
   label: any
   totalNote: any = '';
+  
 
   constructor(
     data: DataService,

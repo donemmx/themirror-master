@@ -30,6 +30,7 @@
 
             ],
             "scripts": [
+              "./node_modules/chart.js/dist/chart.js",
               "./node_modules/@lottiefiles/lottie-player/dist/lottie-player.js"
             ]
           },
@@ -93,7 +94,9 @@
               "src/theme.css"
 
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/chart.js/dist/chart.js"
+            ]
           }
         },
         "server": {

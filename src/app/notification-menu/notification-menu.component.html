@@ -8,8 +8,30 @@
       </div>
       <hr />
       <div class="menu__links">
-        <div class="title">No Notification yet</div>
-        <p>We'll let you know when deadlines are approaching, or there is a course update</p>
+        <div *ngIf="totalNote.length == 0; else myNotification ">
+          <div class="title">No Notification yet</div>
+          <p>We'll let you know when deadlines are approaching, or there is a course update</p>
+        </div>
+        <ng-template #myNotification >
+          <div class="mycart" *ngFor="let notification of notifications$ | async">
+            <div class="course__card"  data-aos="fade-in" data-aos-duration="1500">
+              <div class="course__content">
+                <div class="course__text">
+                  <div class="open">
+
+                  </div>
+                  <div class="group">
+                    <h4 class="title">{{notification.title}}</h4>
+                    <p class="instructor">{{notification.description}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            
+          </div>
+      </ng-template>
       </div>
     </div>
   </div>

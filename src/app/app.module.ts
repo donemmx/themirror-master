@@ -106,7 +106,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
 import { PdfItemComponent } from './pages/pdf-item/pdf-item.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { NotifcationComponent } from './pages/notifcation/notifcation.component';
-
+import { ChartModule } from 'primeng/chart';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -223,6 +223,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     CheckboxModule,
     ChipModule,
     TagModule,
+    ChartModule,
     NgxPayPalModule,
     SkeletonModule,
     BlockUIModule,
