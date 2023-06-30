@@ -28,7 +28,7 @@ export class MyLearningComponent extends BaseComponent {
           
         })
         this.data = {
-            labels: ['A', 'B', 'C', 'D'],
+            labels: ['Social', 'Education', 'Spiritual', 'Identity'],
             datasets: [
                 {
                     data: [50, 50, 100, 60],
