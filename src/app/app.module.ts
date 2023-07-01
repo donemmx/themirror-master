@@ -107,6 +107,7 @@ import { PdfItemComponent } from './pages/pdf-item/pdf-item.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { NotifcationComponent } from './pages/notifcation/notifcation.component';
 import { ChartModule } from 'primeng/chart';
+import { PackagesSectionComponent } from './packages-section/packages-section.component';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -189,6 +190,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     SidebarComponent,
     PrivacyPolicyComponent,
     NotifcationComponent,
+    PackagesSectionComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -38,6 +38,8 @@ export class MyLearningComponent extends BaseComponent {
             ]
         };
         this.options = {
+          maintainAspectRatio: false,
+          aspectRatio: 1,
           cutout: '60%',
           plugins: {
               legend: null
