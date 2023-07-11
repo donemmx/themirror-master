@@ -40,10 +40,11 @@
         <div class="" *ngFor="let course of myCourses$ | async">
           <app-learning-card [course]="course"></app-learning-card>
         </div>
-        
+
       </div>
     </p-tabPanel>
     <p-tabPanel header="Completed">
+      <h3 class="head__three color__sec mt-3">Courses In progress</h3>
       <div class="tab__body flex pb-2 flex-col gap-2 bg-white">
         <p class="pt-2 text-center font-bold">No Compeleted Course yet</p>
         <lottie-player
