@@ -24,19 +24,17 @@ export class MyLearningComponent extends BaseComponent {
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
         this.wholenessApi.getWholenessProgress().subscribe((res)=> {
-          console.log(res);
-          
+          this.data = {
+              labels: Object.keys(res),
+              datasets: [
+                  {
+                      data: Object.values(res),
+                      backgroundColor: [documentStyle.getPropertyValue('--blue-300'), documentStyle.getPropertyValue('--yellow-200'), documentStyle.getPropertyValue('--green-400'),  documentStyle.getPropertyValue('--yellow-500')],
+                      hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-300'), documentStyle.getPropertyValue('--green-600'), documentStyle.getPropertyValue('--yellow-800')]
+                  }
+              ]
+          };
         })
-        this.data = {
-            labels: ['Social', 'Education', 'Spiritual', 'Identity'],
-            datasets: [
-                {
-                    data: [50, 50, 100, 60],
-                    backgroundColor: [documentStyle.getPropertyValue('--blue-300'), documentStyle.getPropertyValue('--yellow-200'), documentStyle.getPropertyValue('--green-400'),  documentStyle.getPropertyValue('--yellow-500')],
-                    hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-300'), documentStyle.getPropertyValue('--green-600'), documentStyle.getPropertyValue('--yellow-800')]
-                }
-            ]
-        };
         this.options = {
           maintainAspectRatio: false,
           aspectRatio: 1,
