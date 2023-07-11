@@ -1,39 +1,63 @@
 <app-header></app-header>
-  <div class="mylearning__top">
-    <div class="group__text relative">
-      <div data-aos="fade-down" data-aos-duration="1700" class="head__three">
-        Welcome Back!
+<div class="mylearning__top">
+  <div class="group__text relative">
+    <div data-aos="fade-down" data-aos-duration="1700" class="head__three">
+      Welcome Back!
+    </div>
+    <h1 data-aos="fade-down" data-aos-duration="800" class="head__one">
+      {{ message.user.name | titlecase }}
+    </h1>
+    <div
+      class="pt-3 relative w-fit left-0"
+      data-aos="fade-in"
+      data-aos-duration="1500"
+    >
+      <div
+        class="absolute top-[20vh] lg:top-[20vh] text-white text-lg text-center left-[28%] lg:left-[28%] w-[45%] lg:w-[45%]"
+      >
+        My Journey to
+        <div class="font-black text-xl">Wholeness</div>
       </div>
-      <h1 data-aos="fade-down" data-aos-duration="800" class="head__one">
-        {{ message.user.name | titlecase }}
-      </h1>
-      <div class="pt-3 relative w-fit left-0" data-aos="fade-in" data-aos-duration="1500">
-        <div
-          class="absolute top-[20vh] lg:top-[20vh] text-white text-lg text-center left-[28%] lg:left-[28%] w-[45%] lg:w-[45%]"
-        >
-          My Journey to
-          <div class="font-black text-xl">Wholeness</div>
-        </div>
-        <p-chart type="doughnut" [data]="data" [options]="options"></p-chart>
-      </div>
+      <p-chart type="doughnut" [data]="data" [options]="options"></p-chart>
     </div>
   </div>
-  <div class="mx-auto w-[100%] md:w-[80%] ">
-    <p-tabView>
-      <p-tabPanel header="Home">
-        <h3 class="head__three color__sec mt-3">My Paid Courses</h3>
+</div>
+<div class="mx-auto w-[100%] md:w-[80%]">
+  <p-tabView>
+    <p-tabPanel header="Home">
+      <h3 class="head__three color__sec mt-3">My Paid Courses</h3>
 
-        <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-2">
-          <div class="" *ngFor="let course of myCourses$ | async">
-            <app-learning-card [course]="course"></app-learning-card>
-          </div>
+      <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-2">
+        <div class="" *ngFor="let course of myCourses$ | async">
+          <app-learning-card [course]="course"></app-learning-card>
         </div>
-        <app-recommended></app-recommended>
-      </p-tabPanel>
-      <p-tabPanel header="In Progress"> </p-tabPanel>
-      <p-tabPanel header="Completed">
-        <div class="tab__body"></div>
-      </p-tabPanel>
-    </p-tabView>
-  </div>
+      </div>
+      <app-recommended></app-recommended>
+    </p-tabPanel>
+    <p-tabPanel header="In Progress">
+      <h3 class="head__three color__sec mt-3">Courses In progress</h3>
+      <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-2">
+        <div class="" *ngFor="let course of myCourses$ | async">
+          <app-learning-card [course]="course"></app-learning-card>
+        </div>
+        
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Completed">
+      <div class="tab__body flex pb-2 flex-col gap-2 bg-white">
+        <p class="pt-2 text-center font-bold">No Compeleted Course yet</p>
+        <lottie-player
+          src="../../../assets/json/completed.json"
+          autoplay
+          loop
+          background="none"
+          animation
+          style="height: 220px"
+          class="scale-x-[-1]"
+        >
+        </lottie-player>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>
 <app-footer></app-footer>
