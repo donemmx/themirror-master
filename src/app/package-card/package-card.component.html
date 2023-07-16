@@ -1,0 +1,21 @@
+<div class="course__card" pRipple  data-aos="fade-in" data-aos-duration="1500" (click)="selectCourse()" [routerLink]="'/package-detail/' + package.packageId">
+
+    <div class="course__content">
+      <div class="" *ngIf="pacakageLoading">
+        <p-skeleton styleClass="mb-1" width="8rem" height="10rem" ></p-skeleton>
+    </div>
+      <div class="course__img" *ngIf="!pacakageLoading" [ngStyle]="{'background-image': 'url(' + package.imageUrl + ')'}">
+      </div>
+      <div class="course__text">
+        <h4 class="title">{{package.title}}</h4>
+        <div class="myTag"  >
+          <div class="tag" *ngFor="let tag of package.tags">
+              {{tag}}
+          </div>
+      </div>
+        <div class="pricing pt-1">{{package?.pricePlan?.price == 0 ? 'Free' : package?.pricePlan?.price | currency: package?.pricePlan?.currency :'symbol-narrow'}}</div>
+    </div>
+  </div>
+  
+  
+  

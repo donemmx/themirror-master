@@ -1,0 +1,26 @@
+<div class="pricing__card"  data-aos="fade-down" data-aos-duration="1400" *ngIf="category$ | async as category">
+    <div class="pricing__top" *ngIf="imageLoading">
+  <p-skeleton styleClass="mb-1" height="13rem"></p-skeleton>
+
+    </div>
+  <div *ngIf="!imageLoading" class="pricing__top" [ngStyle]="{'background-image': 'url(' + package.imageUrl + ')'}" (click)="openVideo()" >
+
+  </div>
+  <div class="pricing__bottom">
+      <div class="tag"  *ngIf="exists">
+        Already Enrolled
+      </div>
+      <h2 [class]="'head__three' + ' ' + category.selected">
+         {{category?.pacakgeSelected?.pricePlan?.price == 0 ? 'Free' : category?.pacakgeSelected?.pricePlan?.price  | currency: category?.pacakgeSelected?.pricePlan?.currency :'symbol-narrow'}}
+      </h2>
+      <div class="btn__group">
+            <button *ngIf="exists" pRipple [class]="'primary__btn' + ' ' + category.selected" (click)="proceed() ">
+              Proceed to learning
+            </button>
+            <button *ngIf="!exists"  pRipple [class]="'primary__btn' + ' ' + category.selected" (click)="auth.isUserLoggedIn() ? process() : login() "> <i class="pi pi-spin pi-spinner" *ngIf="loading"></i>
+              {{auth.isUserLoggedIn() ?  'Pay for Package Now': 'Login to Enroll'}}
+            </button>
+      </div>
+  </div>
+</div>
+

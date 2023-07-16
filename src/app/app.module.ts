@@ -108,6 +108,10 @@ import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { NotifcationComponent } from './pages/notifcation/notifcation.component';
 import { ChartModule } from 'primeng/chart';
 import { PackagesSectionComponent } from './packages-section/packages-section.component';
+import { PackagesComponent } from './packages/packages.component';
+import { PackageCardComponent } from './package-card/package-card.component';
+import { PackageDetailComponent } from './package-detail/package-detail.component';
+import { PackagePricingCardComponent } from './package-pricing-card/package-pricing-card.component';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -191,6 +195,10 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     PrivacyPolicyComponent,
     NotifcationComponent,
     PackagesSectionComponent,
+    PackagesComponent,
+    PackageCardComponent,
+    PackageDetailComponent,
+    PackagePricingCardComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

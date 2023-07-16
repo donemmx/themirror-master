@@ -1,0 +1,17 @@
+.main__course{
+    width: 80%;
+    margin: auto;
+}
+
+::ng-deep .p-datatable-tbody{
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax( 350px, 1fr)) !important;
+    grid-gap: 10px !important;
+  }
+
+  
+::ng-deep .p-button{
+    padding: .35rem .8rem !important;
+    font-size: .75rem !important;
+  }
+  

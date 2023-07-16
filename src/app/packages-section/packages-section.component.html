@@ -2,10 +2,10 @@
     <section class="section__container">
       <div class="section__header">
         <h3 class=" font-bold">Packages</h3>
-        <a aria-label="view all courses" routerLink="" class="small" routerLink="/courses">View All</a>
+        <a aria-label="view all courses" routerLink="" class="small" routerLink="/packages">View All</a>
       </div>
       <div class="course__section md:grid md:grid-cols-2" @listAnimation>
-        <div class="grouped__loading" *ngIf="loading" >
+        <div class="grouped__loading" *ngIf="packageLoading" >
           <div class="grouped" *ngFor="let data of [1]">
             <p-skeleton styleClass="mb-1"></p-skeleton>
             <p-skeleton width="10rem" styleClass="mb-1"></p-skeleton>
@@ -14,7 +14,7 @@
           </div>
         </div>
           <div class="course__container" *ngFor="let package of (packages$ | async)">
-            <app-course-card [course]="package" *ngIf="!loading"></app-course-card>
+            <app-package-card [package]="package" *ngIf="!packageLoading"></app-package-card>
           </div>
       </div>
     </section>

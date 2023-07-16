@@ -1,0 +1,152 @@
+.pricing__card{
+    background: var(--white);
+    width: 320px; 
+    height: 18vh;
+    z-index: 900;
+    border-radius: 10px;
+    box-shadow: var(--shadow-one);
+    position: fixed;
+    right: 6%;
+    top: 20%;
+}
+.pricing__body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.head__three{
+    color: var(--blue);
+}
+.pricing__top{
+    height: 25vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.pricing__top::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #0000007c;
+}
+
+.pricing__top::after{
+    content: '';
+    background-size: contain;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    font-size: 20px;
+    color: white;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pricing__bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+    background: var(--white);
+    box-shadow: var(--shadow-one);
+    position: relative;
+}
+
+.btn__group{
+    display: flex;
+    flex-direction: column;
+}
+
+.primary__btn{
+    width: 260px;
+    color: var(--white);
+}
+
+.children {
+    background: none !important;
+    color: var(--child-theme) !important;
+}
+
+.btn__group .children{
+    background: var(--child-theme) !important;
+    color: white !important;
+    border-color: var(--child-theme) !important;
+}
+
+
+:host ::ng-deep iframe {
+    width: 100% !important;
+    height: 70vh !important;
+    object-fit: cover !important;
+  }
+  
+  :host ::ng-deep .p-dialog .p-dialog-header,:host ::ng-deep .p-dialog .p-dialog-content{
+    background: transparent ;
+  }
+  
+  :host ::ng-deep .p-dialog {
+    box-shadow: none;
+  }
+  :host ::ng-deep .p-component-overlay {
+    background-color: #000000b8;
+    transition-duration: .2s;
+  }
+  :host ::ng-deep .p-component-overlay-enter{
+    animation: none;
+  }
+  :host ::ng-deep .p-dialog .p-dialog-header .p-dialog-header-icon {
+    box-shadow: none;
+    color: #343a40;
+    border-color: transparent;
+    background: #e9ecef;
+  }
+
+
+  .tag{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    padding: 10px;
+    background: rgba(20, 255, 0, 0.1);
+    color: #1a8e42;
+    font-size: 0.75rem;
+    border-radius: 5px;
+  }
+@media screen and (max-width: 1080px) {
+    .pricing__card{
+        width: 100%;
+        height: 10px;
+        position: relative;
+        right: 0;
+    }
+
+    .pricing__top{
+        display: none;
+    }
+
+    .pricing__bottom{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .course__container{
+        width: 90%;
+    }
+
+
+    
+}
+
+
+@media screen and (max-width: 576px) {
+    .btn__group{
+        padding-top: 20px;
+    }
+}

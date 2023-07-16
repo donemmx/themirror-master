@@ -22,6 +22,8 @@ import { QuizComponent } from './quiz/quiz.component';
 import { IntakeAssesmentComponent } from './intake-assesment/intake-assesment.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { PublicProfileComponent } from './pages/public-profile/public-profile.component';
+import { PackagesComponent } from './packages/packages.component';
+import { PackageDetailComponent } from './package-detail/package-detail.component';
 
 const routes: Routes = [
   {
@@ -46,7 +48,13 @@ const routes: Routes = [
     path: 'courses', component: CoursesComponent
   },
   {
+    path: 'packages', component: PackagesComponent
+  },
+  {
     path: 'course-detail/:id', component: CourseDetailComponent
+  },
+  {
+    path: 'package-detail/:id', component: PackageDetailComponent
   },
   {
     path: 'my-learning', component: MyLearningComponent, canActivate: [AuthGuard]

@@ -1,0 +1,43 @@
+<section class="course__detail" *ngIf="message.packageSelected as package">
+  <app-header></app-header>
+  <app-hero-three
+    [title]="package.title"
+    [instructor]="package.instructor"
+  ></app-hero-three>
+  <app-package-pricing-card
+    [price]="package.price"
+    [image]="package.imageUrl"
+    [package]="package"
+  ></app-package-pricing-card>
+  <div class="section__package">
+    <h2 class="font-bold mb-4 underline">All Courses In Package </h2>
+    <div class="course__container">
+      <div
+        class="course__card"
+        pRipple
+        *ngFor="let course of allCourses"
+        data-aos="fade-in"
+        data-aos-duration="1500"
+      >
+        <div class="course__content">
+          <div
+            class="course__img"
+            [ngStyle]="{
+              'background-image': 'url(' + course.courseCoverUrl + ')'
+            }"
+          ></div>
+          <div class="course__text">
+            <h4 class="title">{{ course.title }}</h4>
+            <p class="instructor">Instructor:{{ course.instructor }}</p>
+            <div class="myTag">
+              <div class="tag" *ngFor="let tag of course.tags">
+                {{ tag }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer-bottom></app-footer-bottom>
+</section>

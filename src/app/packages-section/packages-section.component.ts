@@ -14,9 +14,15 @@ import { BaseComponent } from '../pages/base/base.component';
 })
 export class PackagesSectionComponent extends BaseComponent {
   @Input() bg: boolean = false;
-  loading: boolean = true
+  packageLoading: boolean = true
   packages$: Observable<any>
    constructor(data: DataService, router: Router, private api: CoursesService, public auth: AuthService) {
     super(data, router)
+  }
+
+  ngOnInit(): void {
+      this.packages$ = this.api.getAllCoursePackages().pipe(map((res)=> res.data), tap(()=> {
+        this.packageLoading = false
+      }))
   }
 }
