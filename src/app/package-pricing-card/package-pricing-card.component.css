@@ -5,9 +5,9 @@
     z-index: 900;
     border-radius: 10px;
     box-shadow: var(--shadow-one);
-    position: fixed;
+    position: absolute;
     right: 6%;
-    top: 20%;
+    top: 4%;
 }
 .pricing__body{
     display: flex;
